@@ -70,5 +70,5 @@ RSpec.feature "user creates account" , %Q(
     click_button("Submit")
 
     expect(page).to have_content("Password cannot be blank")
-  endgit add
+  end
 end
