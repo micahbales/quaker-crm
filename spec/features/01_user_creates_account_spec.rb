@@ -27,16 +27,48 @@ RSpec.feature "user creates account" , %Q(
   end
 
   scenario "account creation fails due to duplicate email" do
+    let!(:user) { FactoryGirl.create(:user) }
 
+    visit root_path
+    click "Sign Up"
+    fill_in("Email", with: "jimmy@yahoo.com")
+    fill_in("Password", with: "password")
+    fill_in("Confirm Password", with: "password")
+    click_button("Submit")
+
+    expect(page).to have_content("That email already exists! Please choose another")
   end
 
   scenario "account creation fails due to no email provided" do
+
+    visit root_path
+    click "Sign Up"
+    fill_in("Password", with: "password")
+    fill_in("Confirm Password", with: "password")
+    click_button("Submit")
+
+    expect(page).to have_content("Email not provided")
   end
 
   scenario "account creation fails due to non-matching passwords" do
+
+    visit root_path
+    click "Sign Up"
+    fill_in("Email", with: "jimmy@yahoo.com")
+    fill_in("Password", with: "password")
+    fill_in("Confirm Password", with: "passwordz")
+    click_button("Submit")
+
+    expect(page).to have_content("Passwords did not match")
   end
 
   scenario "account creation fails due to password not provided" do
-  end
 
+    visit root_path
+    click "Sign Up"
+    fill_in("Email", with: "jimmy@yahoo.com")
+    click_button("Submit")
+
+    expect(page).to have_content("Password cannot be blank")
+  endgit add
 end
