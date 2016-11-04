@@ -7,6 +7,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'rb-readline'
 gem 'shoulda-matchers', require: false
+gem 'devise'
+
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
