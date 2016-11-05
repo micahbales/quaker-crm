@@ -11,4 +11,12 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  def login_user
+    visit new_user_registration_path
+    fill_in("Email", with: "jimmy@yahoo.com")
+    fill_in("Password", with: "password")
+    fill_in("Confirm Password", with: "password")
+    click_button("Submit")
+  end
 end
