@@ -8,11 +8,11 @@ RSpec.feature "user creates account" , %Q(
 
   # Acceptance Criteria:
   #
-  # [] I must provide an email and password
-  # [] My password and confirmation password must match
-  # [] My email must not duplicate that of an existing user
-  # [] When I log in successfully, I receive a confirmation message
-  # [] When I enter invalid information, I receive an error message
+  # [x] I must provide an email and password
+  # [x] My password and confirmation password must match
+  # [x] My email must not duplicate that of an existing user
+  # [x] When I log in successfully, I receive a confirmation message
+  # [x] When I enter invalid information, I receive an error message
 
   let(:user) { FactoryGirl.create(:user) }
 
