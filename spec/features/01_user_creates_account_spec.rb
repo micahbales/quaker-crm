@@ -14,10 +14,12 @@ RSpec.feature "user creates account" , %Q(
   # [] When I log in successfully, I receive a confirmation message
   # [] When I enter invalid information, I receive an error message
 
+  let(:user) { FactoryGirl.create(:user) }
+
   scenario "user succesfully creates new account and is logged in" do
 
     visit root_path
-    click "Sign Up"
+    click_link("Sign Up")
     fill_in("Email", with: "jimmy@yahoo.com")
     fill_in("Password", with: "password")
     fill_in("Confirm Password", with: "password")
@@ -27,48 +29,48 @@ RSpec.feature "user creates account" , %Q(
   end
 
   scenario "account creation fails due to duplicate email" do
-    let!(:user) { FactoryGirl.create(:user) }
+    user
 
     visit root_path
-    click "Sign Up"
+    click_link("Sign Up")
     fill_in("Email", with: "jimmy@yahoo.com")
     fill_in("Password", with: "password")
     fill_in("Confirm Password", with: "password")
     click_button("Submit")
 
-    expect(page).to have_content("That email already exists! Please choose another")
+    expect(page).to have_content("Email has already been taken")
   end
 
   scenario "account creation fails due to no email provided" do
 
     visit root_path
-    click "Sign Up"
+    click_link("Sign Up")
     fill_in("Password", with: "password")
     fill_in("Confirm Password", with: "password")
     click_button("Submit")
 
-    expect(page).to have_content("Email not provided")
+    expect(page).to have_content("Email can't be blank")
   end
 
   scenario "account creation fails due to non-matching passwords" do
 
     visit root_path
-    click "Sign Up"
+    click_link("Sign Up")
     fill_in("Email", with: "jimmy@yahoo.com")
     fill_in("Password", with: "password")
     fill_in("Confirm Password", with: "passwordz")
     click_button("Submit")
 
-    expect(page).to have_content("Passwords did not match")
+    expect(page).to have_content("Password confirmation doesn't match")
   end
 
   scenario "account creation fails due to password not provided" do
 
     visit root_path
-    click "Sign Up"
+    click_link("Sign Up")
     fill_in("Email", with: "jimmy@yahoo.com")
     click_button("Submit")
 
-    expect(page).to have_content("Password cannot be blank")
+    expect(page).to have_content("Password can't be blank")
   end
 end
