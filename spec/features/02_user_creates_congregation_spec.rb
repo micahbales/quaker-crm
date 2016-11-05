@@ -20,6 +20,7 @@ RSpec.feature "user creates congregation" , %Q(
     visit root_path
     login_user
     click_link("Dashboard")
+    
     click_link("Create a new congregation")
     fill_in "Name"
     fill_in "Address"
