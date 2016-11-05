@@ -15,6 +15,18 @@ RSpec.feature "user creates congregation" , %Q(
 
   let(:user) { FactoryGirl.create(:user) }
 
-  scenario "" do
+  scenario "user successfully creates a congregation" do
+
+    visit "/"
+    click_link("Dashboard")
+    click_link("Create a new congregation")
+    fill_in "Name"
+    fill_in "Address"
+    fill_in "Phone Number"
+    fill_in "Website"
+    fill_in "Affiliation"
+    click_button("Submit")
+
+    expect(page).to have_content("Your congregation has been created!")
   end
 end
