@@ -49,7 +49,7 @@ RSpec.feature "user creates account" , %Q(
     fill_in("Confirm Password", with: "password")
     click_button("Submit")
 
-    expect(page).to have_content("Email not provided")
+    expect(page).to have_content("Email can't be blank")
   end
 
   scenario "account creation fails due to non-matching passwords" do
@@ -61,7 +61,7 @@ RSpec.feature "user creates account" , %Q(
     fill_in("Confirm Password", with: "passwordz")
     click_button("Submit")
 
-    expect(page).to have_content("Passwords did not match")
+    expect(page).to have_content("Password confirmation doesn't match")
   end
 
   scenario "account creation fails due to password not provided" do
@@ -71,6 +71,6 @@ RSpec.feature "user creates account" , %Q(
     fill_in("Email", with: "jimmy@yahoo.com")
     click_button("Submit")
 
-    expect(page).to have_content("Password cannot be blank")
+    expect(page).to have_content("Password can't be blank")
   end
 end
