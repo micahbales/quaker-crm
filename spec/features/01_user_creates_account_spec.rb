@@ -38,7 +38,7 @@ RSpec.feature "user creates account" , %Q(
     fill_in("Confirm Password", with: "password")
     click_button("Submit")
 
-    expect(page).to have_content("That email already exists! Please choose another")
+    expect(page).to have_content("Email has already been taken")
   end
 
   scenario "account creation fails due to no email provided" do
