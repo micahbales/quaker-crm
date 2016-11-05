@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root "home#index"
+  resources :congregations
   namespace :dashboard do
-    root "congregations#index"
+    root "dashboard#index"
   end
 end
