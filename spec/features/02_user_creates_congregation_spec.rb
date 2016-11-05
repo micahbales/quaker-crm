@@ -17,7 +17,7 @@ RSpec.feature "user creates congregation" , %Q(
 
   scenario "user successfully creates a congregation, providing all information" do
 
-    visit "/"
+    visit root_path
     login_user
     click_link("Dashboard")
     click_link("Create a new congregation")
@@ -33,7 +33,7 @@ RSpec.feature "user creates congregation" , %Q(
 
   xscenario "user successfully creates a congregation, filling in name only" do
 
-    visit "/"
+    visit root_path
     login_user
     click_link("Dashboard")
     click_link("Create a new congregation")
@@ -45,7 +45,7 @@ RSpec.feature "user creates congregation" , %Q(
 
   xscenario "user fail to create congregation (no name provided)" do
 
-    visit "/"
+    visit root_path
     login_user
     click_link("Dashboard")
     click_link("Create a new congregation")
