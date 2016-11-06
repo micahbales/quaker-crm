@@ -33,7 +33,7 @@ RSpec.feature "user creates account" , %Q(
 
     visit root_path
     click_link("Sign Up")
-    fill_in("Email", with: "jimmy@yahoo.com")
+    fill_in("Email", with: "jimmy1@yahoo.com")
     fill_in("Password", with: "password")
     fill_in("Confirm Password", with: "password")
     click_button("Submit")
