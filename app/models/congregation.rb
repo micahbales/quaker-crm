@@ -1,4 +1,4 @@
-class Congregation < ApplicatioRecord
+class Congregation < ApplicationRecord
   validates :name, presence: true
 
   belongs_to :user

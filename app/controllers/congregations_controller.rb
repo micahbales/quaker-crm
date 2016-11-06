@@ -1,5 +1,5 @@
 class CongregationsController < ApplicationController
   def new
-    @congregation = Congregation.newgit
+    @congregation = Congregation.new
   end
 end
