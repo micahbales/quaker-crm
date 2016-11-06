@@ -20,13 +20,13 @@ RSpec.feature "user creates congregation" , %Q(
     visit root_path
     login_user
     click_link("Dashboard")
-    
+
     click_link("Create a new congregation")
-    fill_in "Name"
-    fill_in "Address"
-    fill_in "Phone Number"
-    fill_in "Website"
-    fill_in "Affiliation"
+    fill_in("Name", with: "New City Friends Meeting")
+    fill_in("Address", with: "101 Meetinghouse Lane")
+    fill_in("Phone", with: "1234567890")
+    fill_in("Website", with: "www.newcityfriendsmeeting.org")
+    fill_in("Affiliation", with: "Unaffiliated")
     click_button("Submit")
 
     expect(page).to have_content("Your congregation has been created!")
@@ -38,7 +38,7 @@ RSpec.feature "user creates congregation" , %Q(
     login_user
     click_link("Dashboard")
     click_link("Create a new congregation")
-    fill_in "Name"
+    fill_in("Name", with: "New City Friends Meeting")
     click_button("Submit")
 
     expect(page).to have_content("Your congregation has been created!")
@@ -50,10 +50,10 @@ RSpec.feature "user creates congregation" , %Q(
     login_user
     click_link("Dashboard")
     click_link("Create a new congregation")
-    fill_in "Address"
-    fill_in "Phone Number"
-    fill_in "Website"
-    fill_in "Affiliation"
+    fill_in("Address", with: "101 Meetinghouse Lane")
+    fill_in("Phone", with: "1234567890")
+    fill_in("Website", with: "www.newcityfriendsmeeting.org")
+    fill_in("Affiliation", with: "Unaffiliated")
     click_button("Submit")
 
     expect(page).to have_content("Name can't be blank")
