@@ -16,7 +16,7 @@ RSpec.feature "user creates meeting" , %Q(
   scenario "user successfully creates a meeting, providing all information" do
 
     visit root_path
-    login_user
+    register_user
     click_link("Dashboard")
 
     click_link("Create a new meeting")
@@ -33,7 +33,7 @@ RSpec.feature "user creates meeting" , %Q(
   scenario "user successfully creates a meeting, filling in name only" do
 
     visit root_path
-    login_user
+    register_user
     click_link("Dashboard")
     click_link("Create a new meeting")
     fill_in("Name", with: "New City Friends Meeting")
@@ -45,7 +45,7 @@ RSpec.feature "user creates meeting" , %Q(
   scenario "user fail to create meeting (no name provided)" do
 
     visit root_path
-    login_user
+    register_user
     click_link("Dashboard")
     click_link("Create a new meeting")
     fill_in("Address", with: "101 Meetinghouse Lane")
