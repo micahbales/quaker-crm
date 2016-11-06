@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20161106011109) do
     t.string   "phone"
     t.string   "website"
     t.string   "affiliation"
+    t.string   "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

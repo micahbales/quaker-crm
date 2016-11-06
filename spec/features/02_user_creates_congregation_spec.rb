@@ -27,13 +27,12 @@ RSpec.feature "user creates congregation" , %Q(
     fill_in("Phone", with: "1234567890")
     fill_in("Website", with: "www.newcityfriendsmeeting.org")
     fill_in("Affiliation", with: "Unaffiliated")
-    save_and_open_page
     click_button("Submit")
 
-    expect(page).to have_content("Your Meeting has been created!")
+    expect(page).to have_content("Meeting Created!")
   end
 
-  xscenario "user successfully creates a congregation, filling in name only" do
+  scenario "user successfully creates a congregation, filling in name only" do
 
     visit root_path
     login_user
@@ -42,10 +41,10 @@ RSpec.feature "user creates congregation" , %Q(
     fill_in("Name", with: "New City Friends Meeting")
     click_button("Submit")
 
-    expect(page).to have_content("Your Meeting has been created!")
+    expect(page).to have_content("Meeting Created!")
   end
 
-  xscenario "user fail to create congregation (no name provided)" do
+  scenario "user fail to create congregation (no name provided)" do
 
     visit root_path
     login_user

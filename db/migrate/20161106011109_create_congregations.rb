@@ -6,6 +6,7 @@ class CreateCongregations < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :website
       t.string :affiliation
+      t.integer :user_id, null: false
 
       t.timestamps
     end
