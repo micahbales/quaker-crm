@@ -1,6 +1,6 @@
-class CreateCongregations < ActiveRecord::Migration[5.0]
+class CreateMeetings < ActiveRecord::Migration[5.0]
   def change
-    create_table :congregations do |t|
+    create_table :meetings do |t|
       t.string :name, null: false
       t.string :address
       t.string :phone

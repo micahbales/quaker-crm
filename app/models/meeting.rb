@@ -1,4 +1,4 @@
-class Congregation < ApplicationRecord
+class Meeting < ApplicationRecord
   validates :name, presence: true
   validates :user_id, presence: true
 
