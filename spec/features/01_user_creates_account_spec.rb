@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "user creates account" , %Q(
-  As a congregational leader
+  As a Quaker leader
   I want to be able to log into the site
   So that I can set up my congregation
 ) do

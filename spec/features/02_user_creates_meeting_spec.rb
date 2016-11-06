@@ -8,12 +8,10 @@ RSpec.feature "user creates meeting" , %Q(
 
   # Acceptance Criteria:
   #
-  # [] I must be a logged-in user
-  # [] I can create a meeting with a name (required), address, phone, website, and affiliation
-  # [] When I successfully create a meeting, I receive a confirmation message
-  # [] When I fail to provide a name for the meeting, I receive an error message
-
-  let(:user) { FactoryGirl.create(:user) }
+  # [x] I must be a logged-in user
+  # [x] I can create a meeting with a name (required), address, phone, website, and affiliation
+  # [x] When I successfully create a meeting, I receive a confirmation message
+  # [x] When I fail to provide a name for the meeting, I receive an error message
 
   scenario "user successfully creates a meeting, providing all information" do
 
