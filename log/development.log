@@ -1533,3 +1533,14 @@ Processing by DashboardController#index as HTML
 Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 0.9ms)
 
 
+Started GET "/meetings/1" for ::1 at 2016-11-06 20:28:36 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (47.9ms)
+Completed 200 OK in 83ms (Views: 63.3ms | ActiveRecord: 8.4ms)
+
+
