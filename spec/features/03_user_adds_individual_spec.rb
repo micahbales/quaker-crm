@@ -26,9 +26,10 @@ RSpec.feature "user adds individual" , %Q(
     fill_in("Address", with: "101 Jimmy's Place")
     fill_in("Email", with: "jimmy@jimbo.com")
     fill_in("Phone", with: "1234567890")
-    select("29", from: "Day")
-    select("January", from: "Month")
-    select("1995", from: "Year")
+    save_and_open_page
+    select("29", from: "Birthday")
+    select("January", from: "Birthday")
+    select("1995", from: "Birthday")
     fill_in("Notes", with: "Great guy.")
     click_button("Add Person")
 

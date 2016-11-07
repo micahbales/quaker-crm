@@ -23957,3 +23957,754 @@ Processing by IndividualsController#new as HTML
   Rendered layouts/_navigation.html.erb (2.4ms)
 Completed 200 OK in 22ms (Views: 9.0ms | ActiveRecord: 2.7ms)
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$W0e1pV0yw9CiiZpaOBvH5uzp5Mzwwd4vAp3VaRwymNFZVsAGvlhZC"], ["created_at", 2016-11-07 02:04:33 UTC], ["updated_at", 2016-11-07 02:04:33 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 6], ["created_at", 2016-11-07 02:04:33 UTC], ["updated_at", 2016-11-07 02:04:33 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:04:33 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.5ms)
+  Rendered layouts/_navigation.html.erb (2.4ms)
+Completed 200 OK in 190ms (Views: 179.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:04:33 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:04:33 UTC], ["last_sign_in_at", 2016-11-07 02:04:33 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:04:33 UTC], ["id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 28ms (ActiveRecord: 2.3ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:04:33 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (5.0ms)
+Completed 200 OK in 23ms (Views: 16.4ms | ActiveRecord: 0.8ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:04:33 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered dashboard/index.html.erb within layouts/application (13.9ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 1.0ms)
+Started GET "/meetings/6" for 127.0.0.1 at 2016-11-06 21:04:33 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.5ms)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 0.7ms)
+Started GET "/meetings/6/individuals/new" for 127.0.0.1 at 2016-11-06 21:04:33 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"6"}
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (9.8ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 2.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$j2REHVlXN4IRGor7mZJLV.VhycxMYqaeSrrmOPDXbjKvzsNmqchXO"], ["created_at", 2016-11-07 02:05:50 UTC], ["updated_at", 2016-11-07 02:05:50 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 7], ["created_at", 2016-11-07 02:05:50 UTC], ["updated_at", 2016-11-07 02:05:50 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:05:50 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.8ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 174ms (Views: 163.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:05:50 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:05:50 UTC], ["last_sign_in_at", 2016-11-07 02:05:50 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:05:50 UTC], ["id", 7]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 33ms (ActiveRecord: 1.9ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:05:50 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (6.1ms)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.6ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:05:50 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 7]]
+  Rendered dashboard/index.html.erb within layouts/application (15.3ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/7" for 127.0.0.1 at 2016-11-06 21:05:50 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.5ms)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 0.7ms)
+Started GET "/meetings/7/individuals/new" for 127.0.0.1 at 2016-11-06 21:05:50 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"7"}
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (11.1ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 2.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$0Fb3EXcnl0TlFMCJEPdYmu.XAM1ywFEbzc2ZvCkutr4QbHJRt6.Xa"], ["created_at", 2016-11-07 02:07:07 UTC], ["updated_at", 2016-11-07 02:07:07 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 8], ["created_at", 2016-11-07 02:07:07 UTC], ["updated_at", 2016-11-07 02:07:07 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:07:07 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.1ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 172ms (Views: 161.3ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:07:07 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:07:07 UTC], ["last_sign_in_at", 2016-11-07 02:07:07 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:07:07 UTC], ["id", 8]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 25ms (ActiveRecord: 2.2ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:07:07 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.3ms)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:07:07 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 8]]
+  Rendered dashboard/index.html.erb within layouts/application (19.2ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 29ms (Views: 26.0ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/8" for 127.0.0.1 at 2016-11-06 21:07:07 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.4ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.7ms)
+Started GET "/meetings/8/individuals/new" for 127.0.0.1 at 2016-11-06 21:07:07 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"8"}
+  [1m[36mMeeting Load (0.5ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$TyfsOAsN4NPvsCsMAZQtYOnfqZ6QOyUMfsPIW8S55urEFS5N6P4Rq"], ["created_at", 2016-11-07 02:07:17 UTC], ["updated_at", 2016-11-07 02:07:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 9], ["created_at", 2016-11-07 02:07:17 UTC], ["updated_at", 2016-11-07 02:07:17 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:07:17 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.2ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 173ms (Views: 160.3ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:07:17 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:07:17 UTC], ["last_sign_in_at", 2016-11-07 02:07:17 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:07:17 UTC], ["id", 9]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 19ms (ActiveRecord: 1.6ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:07:17 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.2ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:07:17 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 9]]
+  Rendered dashboard/index.html.erb within layouts/application (18.3ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 36ms (Views: 30.3ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/9" for 127.0.0.1 at 2016-11-06 21:07:17 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.8ms)
+Completed 200 OK in 12ms (Views: 8.8ms | ActiveRecord: 0.6ms)
+Started GET "/meetings/9/individuals/new" for 127.0.0.1 at 2016-11-06 21:07:17 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"9"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$kbiXR3VDSO3AiF03MNeyMul9mdVUtilYDmu85I3LyHrut2D99U59u"], ["created_at", 2016-11-07 02:09:11 UTC], ["updated_at", 2016-11-07 02:09:11 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 10], ["created_at", 2016-11-07 02:09:11 UTC], ["updated_at", 2016-11-07 02:09:11 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:09:11 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.1ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+Completed 200 OK in 184ms (Views: 171.7ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:09:11 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:09:11 UTC], ["last_sign_in_at", 2016-11-07 02:09:11 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:09:11 UTC], ["id", 10]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 22ms (ActiveRecord: 2.0ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:09:11 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (4.2ms)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:09:11 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 10]]
+  Rendered dashboard/index.html.erb within layouts/application (19.5ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/10" for 127.0.0.1 at 2016-11-06 21:09:11 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.9ms)
+Completed 200 OK in 13ms (Views: 8.8ms | ActiveRecord: 0.9ms)
+Started GET "/meetings/10/individuals/new" for 127.0.0.1 at 2016-11-06 21:09:11 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"10"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.6ms)
+Completed 200 OK in 25ms (Views: 13.2ms | ActiveRecord: 2.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (2.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$4/4PvHUBKZ.W647oSk38bul3aUL41unNr2bj.gdMQU7Kf.y9pRtwW"], ["created_at", 2016-11-07 02:11:21 UTC], ["updated_at", 2016-11-07 02:11:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 11], ["created_at", 2016-11-07 02:11:21 UTC], ["updated_at", 2016-11-07 02:11:21 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:11:21 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.7ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 173ms (Views: 161.4ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:11:21 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:11:21 UTC], ["last_sign_in_at", 2016-11-07 02:11:21 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:11:21 UTC], ["id", 11]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 23ms (ActiveRecord: 1.5ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:11:21 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.7ms)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:11:21 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 11]]
+  Rendered dashboard/index.html.erb within layouts/application (22.1ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 37ms (Views: 33.0ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/11" for 127.0.0.1 at 2016-11-06 21:11:21 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.5ms)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 0.7ms)
+Started GET "/meetings/11/individuals/new" for 127.0.0.1 at 2016-11-06 21:11:21 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"11"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (6.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.6ms)
+Completed 200 OK in 29ms (Views: 15.6ms | ActiveRecord: 3.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$4Sk5/KQ6f2lxy8SP4K2qs.n.3O5Q6VFmAlfww3jFIG0GedJMHJDNC"], ["created_at", 2016-11-07 02:11:39 UTC], ["updated_at", 2016-11-07 02:11:39 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 12], ["created_at", 2016-11-07 02:11:39 UTC], ["updated_at", 2016-11-07 02:11:39 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:11:39 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.2ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+Completed 200 OK in 183ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:11:39 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:11:39 UTC], ["last_sign_in_at", 2016-11-07 02:11:39 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:11:39 UTC], ["id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 28ms (ActiveRecord: 2.5ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:11:39 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.5ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.4ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:11:39 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 12]]
+  Rendered dashboard/index.html.erb within layouts/application (20.2ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 30ms (Views: 27.7ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/12" for 127.0.0.1 at 2016-11-06 21:11:39 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.5ms)
+Completed 200 OK in 13ms (Views: 9.3ms | ActiveRecord: 0.7ms)
+Started GET "/meetings/12/individuals/new" for 127.0.0.1 at 2016-11-06 21:11:39 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"12"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (5.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.4ms)
+Completed 200 OK in 26ms (Views: 12.2ms | ActiveRecord: 3.0ms)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$wR5myXkVVwcl1TyRJcF9b.bycShDLqvPWfEw/Wm9f6vKWXQoOtxhW"], ["created_at", 2016-11-07 02:12:25 UTC], ["updated_at", 2016-11-07 02:12:25 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 13], ["created_at", 2016-11-07 02:12:25 UTC], ["updated_at", 2016-11-07 02:12:25 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:12:25 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.9ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 181ms (Views: 169.5ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:12:25 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:12:25 UTC], ["last_sign_in_at", 2016-11-07 02:12:25 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:12:25 UTC], ["id", 13]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 25ms (ActiveRecord: 2.0ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:12:26 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (4.6ms)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.7ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:12:26 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 13]]
+  Rendered dashboard/index.html.erb within layouts/application (20.3ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/13" for 127.0.0.1 at 2016-11-06 21:12:26 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.3ms)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 1.0ms)
+Started GET "/meetings/13/individuals/new" for 127.0.0.1 at 2016-11-06 21:12:26 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"13"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$ALdD2s6OnywhqLnPzF/KJ.toVqrUiUtT6rz5FlWXDjXDu5QYaxs/q"], ["created_at", 2016-11-07 02:13:40 UTC], ["updated_at", 2016-11-07 02:13:40 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 14], ["created_at", 2016-11-07 02:13:40 UTC], ["updated_at", 2016-11-07 02:13:40 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:13:40 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 175ms (Views: 162.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:13:40 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:13:40 UTC], ["last_sign_in_at", 2016-11-07 02:13:40 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:13:40 UTC], ["id", 14]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 21ms (ActiveRecord: 1.4ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:13:40 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.6ms)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.4ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:13:40 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 14]]
+  Rendered dashboard/index.html.erb within layouts/application (15.7ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 31ms (Views: 26.5ms | ActiveRecord: 1.0ms)
+Started GET "/meetings/14" for 127.0.0.1 at 2016-11-06 21:13:40 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.4ms)
+Completed 200 OK in 13ms (Views: 9.3ms | ActiveRecord: 0.9ms)
+Started GET "/meetings/14/individuals/new" for 127.0.0.1 at 2016-11-06 21:13:40 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"14"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (6.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.8ms)
+Completed 200 OK in 28ms (Views: 14.2ms | ActiveRecord: 3.5ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$nz2h5mbwE7ESdSszjbqvgOylpgHV0N9qct5m6TaYeAPDokI9M4qWO"], ["created_at", 2016-11-07 02:14:03 UTC], ["updated_at", 2016-11-07 02:14:03 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 15], ["created_at", 2016-11-07 02:14:03 UTC], ["updated_at", 2016-11-07 02:14:03 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:14:03 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.0ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 180ms (Views: 166.3ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:14:04 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:14:04 UTC], ["last_sign_in_at", 2016-11-07 02:14:04 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:14:04 UTC], ["id", 15]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 19ms (ActiveRecord: 1.3ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:14:04 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.6ms)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:14:04 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 15]]
+  Rendered dashboard/index.html.erb within layouts/application (19.8ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 30ms (Views: 27.3ms | ActiveRecord: 1.2ms)
+Started GET "/meetings/15" for 127.0.0.1 at 2016-11-06 21:14:04 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.4ms)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.7ms)
+Started GET "/meetings/15/individuals/new" for 127.0.0.1 at 2016-11-06 21:14:04 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"15"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 2.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$Unn7Q0nVzY1NTTjF1h5ZnOoSjzzMcX6HDUdYs5yopf8w1MLjAnmjG"], ["created_at", 2016-11-07 02:15:11 UTC], ["updated_at", 2016-11-07 02:15:11 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 16], ["created_at", 2016-11-07 02:15:11 UTC], ["updated_at", 2016-11-07 02:15:11 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:15:11 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.3ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 176ms (Views: 165.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:15:11 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:15:11 UTC], ["last_sign_in_at", 2016-11-07 02:15:11 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:15:11 UTC], ["id", 16]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 24ms (ActiveRecord: 1.8ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:15:11 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (4.1ms)
+Completed 200 OK in 18ms (Views: 15.8ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:15:11 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 16]]
+  Rendered dashboard/index.html.erb within layouts/application (18.6ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 1.1ms)
+Started GET "/meetings/16" for 127.0.0.1 at 2016-11-06 21:15:11 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.7ms)
+Completed 200 OK in 12ms (Views: 8.3ms | ActiveRecord: 0.9ms)
+Started GET "/meetings/16/individuals/new" for 127.0.0.1 at 2016-11-06 21:15:11 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"16"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (4.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.8ms)
+Completed 200 OK in 26ms (Views: 12.4ms | ActiveRecord: 3.0ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$gW1XlRnsbRuzkhDbju4G0uPQ7Hc6j8okmmeEYVwDTWrWgzIM8doHm"], ["created_at", 2016-11-07 02:35:27 UTC], ["updated_at", 2016-11-07 02:35:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 17], ["created_at", 2016-11-07 02:35:27 UTC], ["updated_at", 2016-11-07 02:35:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:35:27 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.2ms)
+  Rendered layouts/_navigation.html.erb (8.2ms)
+Completed 200 OK in 218ms (Views: 202.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:35:27 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:35:27 UTC], ["last_sign_in_at", 2016-11-07 02:35:27 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:35:27 UTC], ["id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 87ms (ActiveRecord: 2.7ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:35:27 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (6.1ms)
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:35:27 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.5ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 17]]
+  Rendered dashboard/index.html.erb within layouts/application (19.8ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 34ms (Views: 32.2ms | ActiveRecord: 1.2ms)
+Started GET "/meetings/17" for 127.0.0.1 at 2016-11-06 21:35:27 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mMeeting Load (1.6ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.3ms)
+Completed 200 OK in 22ms (Views: 15.8ms | ActiveRecord: 2.1ms)
+Started GET "/meetings/17/individuals/new" for 127.0.0.1 at 2016-11-06 21:35:27 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"17"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.6ms)
+Completed 200 OK in 37ms (Views: 16.3ms | ActiveRecord: 5.1ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "jimmy1@yahoo.com"], ["encrypted_password", "$2a$04$zflnoCiuhQQZzxOvVxe66.5kB9U/6jDPI3rm8I2S8QZjGOnMCvRZq"], ["created_at", 2016-11-07 02:40:07 UTC], ["updated_at", 2016-11-07 02:40:07 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("name", "address", "phone", "website", "affiliation", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New City Friends Meeting"], ["address", "101 Quaker Lane"], ["phone", "1234567890"], ["website", "www.newcityfriends.org"], ["affiliation", "Great State Yearly Meeting"], ["user_id", 18], ["created_at", 2016-11-07 02:40:07 UTC], ["updated_at", 2016-11-07 02:40:07 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:40:07 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.1ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 171ms (Views: 160.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-06 21:40:07 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"jimmy1@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jimmy1@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-11-07 02:40:07 UTC], ["last_sign_in_at", 2016-11-07 02:40:07 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-11-07 02:40:07 UTC], ["id", 18]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 22ms (ActiveRecord: 1.8ms)
+Started GET "/" for 127.0.0.1 at 2016-11-06 21:40:07 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.8ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.4ms)
+Started GET "/dashboard" for 127.0.0.1 at 2016-11-06 21:40:07 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 18]]
+  Rendered dashboard/index.html.erb within layouts/application (20.1ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 1.3ms)
+Started GET "/meetings/18" for 127.0.0.1 at 2016-11-06 21:40:07 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.6ms)
+Completed 200 OK in 13ms (Views: 8.3ms | ActiveRecord: 0.6ms)
+Started GET "/meetings/18/individuals/new" for 127.0.0.1 at 2016-11-06 21:40:07 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"18"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.4ms)
+Completed 200 OK in 27ms (Views: 13.7ms | ActiveRecord: 3.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
