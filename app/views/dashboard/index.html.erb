@@ -1,3 +1,11 @@
 <h1>Dashboard</h1>
 
+<ul>
+  <% if current_user && current_user.meetings %>
+    <% current_user.meetings.each do |meeting| %>
+      <li><%= link_to meeting.name, meeting_path(meeting) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
 (<%= link_to "Create a new meeting", new_meeting_path %>)

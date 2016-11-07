@@ -14,13 +14,13 @@ RSpec.feature "user adds individual" , %Q(
   # [] When I successfully add a user, I receive a confirmation message
   # [] When I fail to provide a name, I receive an error message
 
-  let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting) }
 
   scenario "user successfully adds individual to congregation" do
     login_user
     visit dashboard_path
     click_link("New City Friends Meeting")
+    click_link("Add individual to this Meeting")
     fill_in("First Name", with: "Jim")
     fill_in("Last Name", with: "Bo")
     fill_in("Address", with: "101 Jimmy's Place")
