@@ -2736,3 +2736,102 @@ Completed 200 OK in 25ms (Views: 21.6ms | ActiveRecord: 0.7ms)
   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/meetings/1/individuals/new" for ::1 at 2016-11-07 10:36:45 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.6ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (11.1ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (7.2ms)
+Completed 200 OK in 50ms (Views: 43.4ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-07 10:37:34 -0500
+  [1m[36mIndividual Load (1.7ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals"[0m
+  Rendered dashboard/index.html.erb within layouts/application (44832565.2ms)
+  Rendered layouts/_navigation.html.erb (3.5ms)
+Completed 200 OK in 44832626ms (Views: 11586160.0ms | ActiveRecord: 3.1ms)
+
+
+  Rendered dashboard/index.html.erb within layouts/application (44946214.7ms)
+Completed 401 Unauthorized in 44946221ms (ActiveRecord: 2.6ms)
+
+
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-07 10:39:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0ccNWjbp3YH/+KWUpBOqYWuG1zypC1507LyF6zS6Oy9lLjasUDZL/cYx5bumJHc1rvR14umyAelgMBOirTGBFQ==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.7ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "individuals" ("first_name", "last_name", "address", "email", "phone", "notes", "meeting_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Micah"], ["last_name", "Bales"], ["address", "4944 E Capitol St NE"], ["email", "micahbales@gmail.com"], ["phone", "3162106224"], ["notes", ""], ["meeting_id", 1], ["created_at", 2016-11-07 15:39:58 UTC], ["updated_at", 2016-11-07 15:39:58 UTC]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/meetings/1
+Completed 302 Found in 51ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 10:39:58 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (16.4ms)
+Completed 200 OK in 200ms (Views: 194.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/meetings/1/individuals/new" for ::1 at 2016-11-07 10:54:59 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (16.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (20.2ms)
+Completed 200 OK in 75ms (Views: 48.6ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-07 10:55:09 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fKJ8WG3XooiOG/1gOruM+QO++IUFurftyzvAIYZIbPjIS0euCwg09LfSvU84jFGtxsxaW0UD6HBHt1ZoH8PWwg==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"1", "month"=>"1", "year"=>"1950"}, "commit"=>"Submit", "meeting_id"=>"1"}
+Completed 500 Internal Server Error in 691228ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/individuals_controller.rb:8:in `create'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (43.2ms)
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-07 11:06:49 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fKJ8WG3XooiOG/1gOruM+QO++IUFurftyzvAIYZIbPjIS0euCwg09LfSvU84jFGtxsxaW0UD6HBHt1ZoH8PWwg==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"1", "month"=>"1", "year"=>"1950"}, "commit"=>"Submit", "meeting_id"=>"1"}
+Completed 500 Internal Server Error in 409602ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/individuals_controller.rb:8:in `create'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (42.7ms)
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-07 11:13:44 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fKJ8WG3XooiOG/1gOruM+QO++IUFurftyzvAIYZIbPjIS0euCwg09LfSvU84jFGtxsxaW0UD6HBHt1ZoH8PWwg==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"1", "month"=>"1", "year"=>"1950"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "individuals" ("first_name", "last_name", "address", "email", "phone", "birthday", "notes", "meeting_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Micah"], ["last_name", "Bales"], ["address", "4944 E Capitol St NE"], ["email", "micahbales@gmail.com"], ["phone", "3162106224"], ["birthday", Sun, 01 Jan 1950], ["notes", ""], ["meeting_id", 1], ["created_at", 2016-11-07 16:13:44 UTC], ["updated_at", 2016-11-07 16:13:44 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m

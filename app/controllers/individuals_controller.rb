@@ -5,8 +5,10 @@ class IndividualsController < ApplicationController
   end
 
   def create
+
     @meeting = Meeting.find(params[:meeting_id])
     @individual = Individual.new(individual_params)
+    @individual.birthday = DateTime.new(params[:birthday]["year"].to_i, params[:birthday]["month"].to_i, params[:birthday]["day"].to_i)
     @individual.meeting = @meeting
 
     if @individual.save
