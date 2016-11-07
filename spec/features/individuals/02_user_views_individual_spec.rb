@@ -22,7 +22,7 @@ RSpec.feature "user views individual" , %Q(
   scenario "visit individual page via meeting page" do
 
     visit meeting_path(meeting)
-    click_link("#{individual2.first_name} #{individual2.last_name}")
+    click_link("#{individual.first_name} #{individual.last_name}")
 
     expect(page).to have_content("#{individual.first_name} #{individual.last_name}")
     expect(page).to have_content(individual.address)
@@ -30,6 +30,12 @@ RSpec.feature "user views individual" , %Q(
     expect(page).to have_content(individual.phone)
     expect(page).to have_content(individual.birthday)
     expect(page).to have_content(individual.notes)
+  end
+
+  scenario "view details of second user on the list" do
+
+    visit meeting_path(meeting)
+    click_link("#{individual2.first_name} #{individual2.last_name}")
 
     expect(page).to have_content("#{individual2.first_name} #{individual2.last_name}")
     expect(page).to have_content(individual2.address)
@@ -38,5 +44,4 @@ RSpec.feature "user views individual" , %Q(
     expect(page).to have_content(individual2.birthday)
     expect(page).to have_content(individual2.notes)
   end
-
 end

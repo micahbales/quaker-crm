@@ -1,0 +1,9 @@
+<h1><%= @individual.first_name %> <%= @individual.last_name %></h1>
+
+<ul>
+  <% @individual.attributes.each do |key, value| %>
+    <li><%= "#{key}: #{value}" %></li>
+    <% end %>
+</ul>
+
+<%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>
