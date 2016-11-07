@@ -17,6 +17,7 @@ RSpec.feature "user views individual" , %Q(
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
   let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
+  let!(:individual2) { FactoryGirl.create(:individual, meeting: meeting) }
 
   scenario "visit individual page via meeting page" do
 
@@ -29,6 +30,13 @@ RSpec.feature "user views individual" , %Q(
     expect(page).to have_content(individual.phone)
     expect(page).to have_content(individual.birthday)
     expect(page).to have_content(individual.notes)
+
+    expect(page).to have_content("#{individual2.first_name} #{individual2.last_name}")
+    expect(page).to have_content(individual2.address)
+    expect(page).to have_content(individual2.email)
+    expect(page).to have_content(individual2.phone)
+    expect(page).to have_content(individual2.birthday)
+    expect(page).to have_content(individual2.notes)
   end
 
 end
