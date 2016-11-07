@@ -1893,3 +1893,363 @@ rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
 /Users/micahbales/.rubies/ruby-2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
   Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
   Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.4ms)
+Started GET "/meetings/1/individuals/new" for ::1 at 2016-11-06 21:55:26 -0500
+Processing by IndividualsController#new as HTML
+  Parameters: {"meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering individuals/new.html.erb within layouts/application
+  Rendered individuals/new.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (18.3ms)
+Completed 200 OK in 58ms (Views: 34.7ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-06 21:55:48 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RtfgS19Nr6pZqFHi1pzle7qhgC8nbX3xH1N159OApkXyPtu9OZI51mBhEc3Uqzgvf9Mi8WfUImyT3+OuSgscfw==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering meetings/new.html.erb within layouts/application
+  Rendered meetings/new.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.9ms)
+Completed 200 OK in 35ms (Views: 25.2ms | ActiveRecord: 1.4ms)
+
+
+Started PATCH "/meetings/1" for ::1 at 2016-11-06 21:56:23 -0500
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for MeetingsController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.0.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+warden (1.2.6) lib/warden/manager.rb:34:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/micahbales/.rubies/ruby-2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+/Users/micahbales/.rubies/ruby-2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+/Users/micahbales/.rubies/ruby-2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.3ms)
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-06 21:56:30 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RtfgS19Nr6pZqFHi1pzle7qhgC8nbX3xH1N159OApkXyPtu9OZI51mBhEc3Uqzgvf9Mi8WfUImyT3+OuSgscfw==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 4.3ms)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `meeting_id`):
+  
+app/controllers/individuals_controller.rb:10:in `create'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.6ms)
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-06 21:57:14 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RtfgS19Nr6pZqFHi1pzle7qhgC8nbX3xH1N159OApkXyPtu9OZI51mBhEc3Uqzgvf9Mi8WfUImyT3+OuSgscfw==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 67951ms (ActiveRecord: 5.2ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/individuals_controller.rb:10:in `create'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (42.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1214192801294376960);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateIndividuals (20161107013834)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "individuals"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161107013834"]]
+  [1m[35m (19.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1214192801294376960)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'meetings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1214192801294376960);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateIndividuals (20161107013834)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "individuals" ("id" serial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "address" character varying, "email" character varying, "phone" character varying, "birthday" date, "notes" character varying, "meeting_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161107013834"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1214192801294376960)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'individuals'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'meetings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1214192801294376960);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateIndividuals (20161107013834)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "individuals"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161107013834"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1214192801294376960)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'meetings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1214192801294376960);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateIndividuals (20161107013834)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "individuals" ("id" serial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "address" character varying, "email" character varying, "phone" character varying, "birthday" date, "notes" character varying, "meeting_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161107013834"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1214192801294376960)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'individuals'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'meetings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-06 21:59:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RtfgS19Nr6pZqFHi1pzle7qhgC8nbX3xH1N159OApkXyPtu9OZI51mBhEc3Uqzgvf9Mi8WfUImyT3+OuSgscfw==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 30904ms (ActiveRecord: 5.6ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/individuals_controller.rb:10:in `create'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (43.1ms)
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-06 21:59:47 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RtfgS19Nr6pZqFHi1pzle7qhgC8nbX3xH1N159OApkXyPtu9OZI51mBhEc3Uqzgvf9Mi8WfUImyT3+OuSgscfw==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 4.2ms)
+
+
+  
+NoMethodError (undefined method `meeting_id=' for nil:NilClass):
+  
+app/controllers/individuals_controller.rb:10:in `create'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.8ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.6ms)
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-06 21:59:56 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RtfgS19Nr6pZqFHi1pzle7qhgC8nbX3xH1N159OApkXyPtu9OZI51mBhEc3Uqzgvf9Mi8WfUImyT3+OuSgscfw==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 10.7ms)
+
+
+  
+NoMethodError (undefined method `meeting=' for nil:NilClass):
+  
+app/controllers/individuals_controller.rb:10:in `create'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.2ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (18.6ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.8ms)
+Started POST "/meetings/1/individuals" for ::1 at 2016-11-06 22:00:04 -0500
+Processing by IndividualsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RtfgS19Nr6pZqFHi1pzle7qhgC8nbX3xH1N159OApkXyPtu9OZI51mBhEc3Uqzgvf9Mi8WfUImyT3+OuSgscfw==", "individual"=>{"first_name"=>"Micah", "last_name"=>"Bales", "address"=>"4944 E Capitol St NE", "email"=>"micahbales@gmail.com", "phone"=>"3162106224", "notes"=>""}, "birthday"=>{"day"=>"29", "month"=>"4", "year"=>"1983"}, "commit"=>"Submit", "meeting_id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "individuals" ("first_name", "last_name", "address", "email", "phone", "notes", "meeting_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Micah"], ["last_name", "Bales"], ["address", "4944 E Capitol St NE"], ["email", "micahbales@gmail.com"], ["phone", "3162106224"], ["notes", ""], ["meeting_id", 1], ["created_at", 2016-11-07 03:00:04 UTC], ["updated_at", 2016-11-07 03:00:04 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/meetings/1
+Completed 302 Found in 38ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-06 22:00:04 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (26.2ms)
+Completed 200 OK in 48ms (Views: 39.3ms | ActiveRecord: 7.0ms)
+
+

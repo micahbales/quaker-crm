@@ -8,6 +8,7 @@ class CreateIndividuals < ActiveRecord::Migration[5.0]
       t.string :phone
       t.date :birthday
       t.string :notes
+      t.integer :meeting_id, null: false
 
       t.timestamps
     end

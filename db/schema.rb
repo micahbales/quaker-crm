@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161107013834) do
     t.string   "phone"
     t.date     "birthday"
     t.string   "notes"
+    t.integer  "meeting_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
