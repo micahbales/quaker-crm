@@ -14,6 +14,7 @@ RSpec.feature "user adds individual" , %Q(
   # [] When I successfully add a user, I receive a confirmation message
   # [] When I fail to provide a name, I receive an error message
 
+  let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting) }
 
   scenario "user successfully adds individual to congregation" do
@@ -26,7 +27,6 @@ RSpec.feature "user adds individual" , %Q(
     fill_in("Address", with: "101 Jimmy's Place")
     fill_in("Email", with: "jimmy@jimbo.com")
     fill_in("Phone", with: "1234567890")
-    save_and_open_page
     select("29", from: "Birthday")
     select("January", from: "Birthday")
     select("1995", from: "Birthday")
