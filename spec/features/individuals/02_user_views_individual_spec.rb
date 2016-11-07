@@ -22,7 +22,7 @@ RSpec.feature "user views individual" , %Q(
   scenario "visit individual page via meeting page" do
 
     visit meeting_path(meeting)
-    click_link("#{individual.first_name} #{individual.last_name}")
+    click_link("#{individual2.first_name} #{individual2.last_name}")
 
     expect(page).to have_content("#{individual.first_name} #{individual.last_name}")
     expect(page).to have_content(individual.address)

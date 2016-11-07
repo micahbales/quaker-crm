@@ -4,7 +4,7 @@
   <h3>People of <%= @meeting.name %></h3>
   <ul>
     <% @meeting.individuals.each do |individual| %>
-      <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(individual) %></li>
+      <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual) %></li>
     <% end %>
   </ul>
 <% end %>
