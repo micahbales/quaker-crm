@@ -1,3 +1,13 @@
 <h1>Dashboard</h1>
 
-<%= link_to "Create a new meeting", new_meeting_path %>
+<ul>
+  <% if current_user && current_user.meetings %>
+    <% current_user.meetings.each do |meeting| %>
+      <li><%= link_to meeting.name, meeting_path(meeting) %></li>
+    <% end %>
+  <% else %>
+    <h3>You haven't set up your Meeting yet. <%= link_to "Click here to create a new meeting", new_meeting_path %>.</h3>
+  <% end %>
+</ul>
+
+(<%= link_to "Create a new meeting", new_meeting_path %>)
