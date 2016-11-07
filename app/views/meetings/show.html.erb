@@ -1,3 +1,12 @@
 <h1><%= @meeting.name %></h1>
 
+<% if @meeting.individuals %>
+  <h3>People of <%= @meeting.name %></h3>
+  <ul>
+    <% @meeting.individuals.each do |individual| %>
+      <li><%= individual.first_name %> <%= individual.last_name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to "Add individual to #{@meeting.name}", new_meeting_individual_path(@meeting) %>

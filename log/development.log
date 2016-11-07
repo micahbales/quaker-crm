@@ -2883,3 +2883,312 @@ Processing by IndividualsController#new as HTML
 Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/dashboard" for ::1 at 2016-11-07 11:36:39 -0500
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered dashboard/index.html.erb within layouts/application (42.7ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 58ms (Views: 51.9ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:36:40 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.3ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (18.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.5ms)
+Completed 200 OK in 41ms (Views: 35.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/meetings/3/individuals/1" for ::1 at 2016-11-07 11:36:53 -0500
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for IndividualsController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.0.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+warden (1.2.6) lib/warden/manager.rb:34:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/micahbales/.rubies/ruby-2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+/Users/micahbales/.rubies/ruby-2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+/Users/micahbales/.rubies/ruby-2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.4ms)
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:37:42 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.5ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (5.9ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.8ms)
+Completed 200 OK in 38ms (Views: 33.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:38:01 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.3ms)
+Completed 200 OK in 19ms (Views: 16.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:38:06 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.3ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (4.4ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (6.1ms)
+Completed 200 OK in 40ms (Views: 35.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:39:31 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.3ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.5ms)
+Completed 200 OK in 23ms (Views: 19.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:40:49 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.4ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (4.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (4.0ms)
+Completed 200 OK in 37ms (Views: 33.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:40:53 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.7ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.5ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (3.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.9ms)
+Completed 200 OK in 23ms (Views: 19.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:42:04 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (1.0ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.7ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (5.5ms)
+Completed 200 OK in 47ms (Views: 39.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:50:44 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.7ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.7ms)
+
+
+  
+SyntaxError (/Users/micahbales/Dropbox/Documents/Git/portfolio-projects/quaker-crm/app/views/meetings/show.html.erb:8: syntax error, unexpected keyword_end
+...eze;@output_buffer.append=( end );@output_buffer.safe_append...
+...                               ^
+/Users/micahbales/Dropbox/Documents/Git/portfolio-projects/quaker-crm/app/views/meetings/show.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/Users/micahbales/Dropbox/Documents/Git/portfolio-projects/quaker-crm/app/views/meetings/show.html.erb:14: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/micahbales/Dropbox/Documents/Git/portfolio-projects/quaker-crm/app/views/meetings/show.html.erb:16: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/meetings/show.html.erb:8: syntax error, unexpected keyword_end
+app/views/meetings/show.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+app/views/meetings/show.html.erb:14: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/meetings/show.html.erb:16: syntax error, unexpected keyword_end, expecting ')'
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/micahbales/.gem/ruby/2.2.5/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (41.3ms)
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:50:49 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.7ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (5.0ms)
+Completed 200 OK in 29ms (Views: 23.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:50:58 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.3ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (3.8ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.8ms)
+Completed 200 OK in 30ms (Views: 25.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:51:04 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.6ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.3ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (4.7ms)
+Completed 200 OK in 44ms (Views: 36.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:51:14 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.7ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.4ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.9ms)
+Completed 200 OK in 35ms (Views: 29.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:51:18 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.5ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (4.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (3.4ms)
+Completed 200 OK in 37ms (Views: 32.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:51:36 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.7ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.6ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (5.1ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (4.3ms)
+Completed 200 OK in 44ms (Views: 38.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:51:41 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (1.0ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  Rendered meetings/show.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (4.8ms)
+Completed 200 OK in 37ms (Views: 30.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:52:04 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.3ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (9939.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (6.1ms)
+Completed 200 OK in 10005ms (Views: 10001.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:55:05 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.3ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (2.6ms)
+Completed 200 OK in 28ms (Views: 23.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/meetings/1" for ::1 at 2016-11-07 11:57:33 -0500
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering meetings/show.html.erb within layouts/application
+  [1m[36mIndividual Load (0.7ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals" WHERE "individuals"."meeting_id" = $1[0m  [["meeting_id", 1]]
+  Rendered meetings/show.html.erb within layouts/application (4.2ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (7.3ms)
+Completed 200 OK in 46ms (Views: 41.0ms | ActiveRecord: 2.7ms)
+
+
