@@ -20,7 +20,6 @@ RSpec.feature "user adds individual" , %Q(
     login_user
     visit dashboard_path
     click_link("New City Friends Meeting")
-    save_and_open_page
     click_link("Add individual to New City Friends Meeting")
     fill_in("First Name", with: "Jim")
     fill_in("Last Name", with: "Bo")
