@@ -15,7 +15,7 @@ RSpec.feature "user adds individual" , %Q(
   # [] When I fail to provide a name, I receive an error message
 
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:meeting) { FactoryGirl.create(:meeting) }
+  let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
 
   scenario "user successfully adds individual to congregation" do
     login_user
