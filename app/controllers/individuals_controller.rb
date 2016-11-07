@@ -5,7 +5,6 @@ class IndividualsController < ApplicationController
   end
 
   def create
-
     @meeting = Meeting.find(params[:meeting_id])
     @individual = Individual.new(individual_params)
     @individual.birthday = DateTime.new(params[:birthday]["year"].to_i, params[:birthday]["month"].to_i, params[:birthday]["day"].to_i)
@@ -23,6 +22,24 @@ class IndividualsController < ApplicationController
   def show
     @meeting = Meeting.find(params[:meeting_id])
     @individual = Individual.find(params[:id])
+  end
+
+  def edit
+    @individual = Individual.find(params[:id])
+    @meeting = Meeting.find(params[:meeting_id])
+  end
+
+  def update
+    @meeting = Meeting.find(params[:meeting_id])
+    @individual = Individual.find(params[:id])
+
+    if @individual.update(individual_params)
+      flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been updated!"
+      redirect_to [@meeting, @individual]
+    else
+      flash[:errors] = @individual.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
   private

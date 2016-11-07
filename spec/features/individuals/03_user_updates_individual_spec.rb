@@ -25,12 +25,12 @@ RSpec.feature "user updates individual" , %Q(
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     click_link("Update #{individual.first_name}'s information")
-    fill_in("First Name", with: "Jim")
-    fill_in("Last Name", with: "Bo")
+    fill_in("First Name", with: "#{individual.first_name}")
+    fill_in("Last Name", with: "#{individual.last_name}")
     click_button("Update")
 
-    expect(page).to have_content("Record updated!")
-    expect(page).to have_content("Jim Bo")
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name} has been updated!")
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name}")
   end
 
   xscenario "user updates individual's email" do
@@ -41,7 +41,7 @@ RSpec.feature "user updates individual" , %Q(
     fill_in("Email", with: "jimmy@jimbo.com")
     click_button("Update")
 
-    expect(page).to have_content("Record updated!")
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name} has been updated!")
     expect(page).to have_content("jimmy@jimbo.com")
   end
 
@@ -55,7 +55,7 @@ RSpec.feature "user updates individual" , %Q(
     select("1909")
     click_button("Update")
 
-    expect(page).to have_content("Record updated!")
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name} has been updated!")
     expect(page).to have_content("1909-12-21")
   end
 
