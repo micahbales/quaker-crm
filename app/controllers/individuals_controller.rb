@@ -12,7 +12,7 @@ class IndividualsController < ApplicationController
     @individual.meeting = @meeting
 
     if @individual.save
-      flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been added to #{@meeting.name}"
+      flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been added to #{@meeting.name}!"
       redirect_to meeting_path(@meeting)
     else
       flash[:errors] = @individual.errors.full_messages.to_sentence
