@@ -20,6 +20,11 @@ class IndividualsController < ApplicationController
     end
   end
 
+  def show
+    @meeting = Meeting.find(params[:meeting_id])
+    @individual = Individual.find(params[:id])
+  end
+
   private
 
   def individual_params
