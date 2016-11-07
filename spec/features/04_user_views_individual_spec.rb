@@ -16,6 +16,10 @@ RSpec.feature "" %Q(
   # [] I can visit an individual's profile page via a listed link on the meeting's page
   # [] I can view an individual's first name and last name, address, email, phone, birthday, and notes
 
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
+
   scenario "" do
   end
 
