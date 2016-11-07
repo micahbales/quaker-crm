@@ -18,6 +18,10 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   private
 
   def meeting_params
