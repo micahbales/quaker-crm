@@ -5,5 +5,5 @@
     <li><%= "#{key}: #{value}" %></li>
     <% end %>
 </ul>
-
+<%= link_to "Update #{@individual.first_name}'s information", meeting_individual_path(@meeting, @individual), method: :patch %>
 <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>

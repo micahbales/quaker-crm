@@ -24,7 +24,7 @@ RSpec.feature "user updates individual" , %Q(
 
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
-    click_link("Update this Friend's information")
+    click_link("Update #{individual.first_name}'s information")
     fill_in("First Name", with: "Jim")
     fill_in("Last Name", with: "Bo")
     click_button("Update")
@@ -37,7 +37,7 @@ RSpec.feature "user updates individual" , %Q(
 
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
-    click_link("Update this Friend's information")
+    click_link("Update #{individual.first_name}'s information")
     fill_in("Email", with: "jimmy@jimbo.com")
     click_button("Update")
 
@@ -49,7 +49,7 @@ RSpec.feature "user updates individual" , %Q(
 
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
-    click_link("Update this Friend's information")
+    click_link("Update #{individual.first_name}'s information")
     select("21")
     select("December")
     select("1909")
@@ -63,7 +63,7 @@ RSpec.feature "user updates individual" , %Q(
 
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
-    click_link("Update this Friend's information")
+    click_link("Update #{individual.first_name}'s information")
     fill_in("First Name", with: "")
     click_button("Update")
 
