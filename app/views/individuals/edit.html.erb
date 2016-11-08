@@ -23,5 +23,6 @@
   <%= f.text_field :notes %>
   <br />
   <%= f.submit "Update" %>
-
 <% end %>
+
+<%= button_to "Delete Profile", meeting_individual_path, method: "delete" %>
