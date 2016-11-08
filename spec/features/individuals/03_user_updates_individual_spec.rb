@@ -33,7 +33,7 @@ RSpec.feature "user updates individual" , %Q(
     expect(page).to have_content("#{individual.first_name} #{individual.last_name}")
   end
 
-  xscenario "user updates individual's email" do
+  scenario "user updates individual's email" do
 
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
@@ -45,7 +45,7 @@ RSpec.feature "user updates individual" , %Q(
     expect(page).to have_content("jimmy@jimbo.com")
   end
 
-  xscenario "user updates individual's birthday" do
+  scenario "user updates individual's birthday" do
 
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
@@ -59,7 +59,7 @@ RSpec.feature "user updates individual" , %Q(
     expect(page).to have_content("1909-12-21")
   end
 
-  xscenario "user gets error for leaving a required field blank" do
+  scenario "user gets error for leaving a required field blank" do
 
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")

@@ -32,6 +32,7 @@ class IndividualsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:meeting_id])
     @individual = Individual.find(params[:id])
+    @individual.birthday = DateTime.new(params[:birthday]["year"].to_i, params[:birthday]["month"].to_i, params[:birthday]["day"].to_i)
 
     if @individual.update(individual_params)
       flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been updated!"
