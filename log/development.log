@@ -3337,3 +3337,27 @@ Processing by IndividualsController#update as HTML
 Completed 200 OK in 137ms (Views: 90.7ms | ActiveRecord: 3.2ms)
 
 
+Started GET "/meetings/1/individuals/5" for ::1 at 2016-11-07 22:33:57 -0500
+Processing by IndividualsController#show as HTML
+  Parameters: {"meeting_id"=>"1", "id"=>"5"}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mIndividual Load (0.7ms)[0m  [1m[34mSELECT  "individuals".* FROM "individuals" WHERE "individuals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering individuals/show.html.erb within layouts/application
+  Rendered individuals/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (25.8ms)
+Completed 200 OK in 76ms (Views: 42.1ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/meetings/1/individuals/5/edit" for ::1 at 2016-11-07 22:34:00 -0500
+Processing by IndividualsController#edit as HTML
+  Parameters: {"meeting_id"=>"1", "id"=>"5"}
+  [1m[36mIndividual Load (36.4ms)[0m  [1m[34mSELECT  "individuals".* FROM "individuals" WHERE "individuals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mMeeting Load (6.3ms)[0m  [1m[34mSELECT  "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering individuals/edit.html.erb within layouts/application
+  Rendered individuals/edit.html.erb within layouts/application (12.6ms)
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_navigation.html.erb (21.2ms)
+Completed 200 OK in 113ms (Views: 58.0ms | ActiveRecord: 46.5ms)
+
+

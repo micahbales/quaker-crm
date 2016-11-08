@@ -17,7 +17,7 @@
   <%= f.text_field :phone %>
   <br />
   <%= f.label :birthday %>
-  <%= select_date Date.new(1950,1,1), start_year: Date.today.year - 120, end_year: Date.today.year, order: [:day, :month, :year], prefix: :birthday %>
+  <%= select_date @individual.birthday, start_year: Date.today.year - 120, end_year: Date.today.year, order: [:day, :month, :year], prefix: :birthday %>
   <br />
   <%= f.label :notes %>
   <%= f.text_field :notes %>

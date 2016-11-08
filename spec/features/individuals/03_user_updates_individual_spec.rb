@@ -66,7 +66,6 @@ RSpec.feature "user updates individual" , %Q(
     click_link("Update #{individual.first_name}'s information")
     fill_in("First Name", with: "")
     click_button("Update")
-    save_and_open_page
 
     expect(page).to have_content("First name can't be blank")
     expect(page).to have_content("Edit #{individual.first_name} #{individual.last_name}")
