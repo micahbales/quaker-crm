@@ -1,4 +1,6 @@
 class MeetingsController < ApplicationController
+  before_action :authorize_user!
+  
   def new
     @meeting = Meeting.new
   end
