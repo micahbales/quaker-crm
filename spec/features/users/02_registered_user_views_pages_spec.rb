@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "registered user may view all pages" , %Q(
-
+  As a Quaker leader
+  I want my dashboard and information to be off limits to others
+  So that my Meeting's data is kept private
 ) do
 
   # Acceptance Criteria:
