@@ -44,6 +44,19 @@ class IndividualsController < ApplicationController
     end
   end
 
+  def destroy
+    @meeting = Meeting.find(params[:meeting_id])
+    @individual = Individual.find(params[:id])
+
+    if @individual.delete
+      flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been deleted from #{@meeting.name}"
+      redirect_to @meeting
+    else
+      flash[:error] = @individual.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
   private
 
   def individual_params
