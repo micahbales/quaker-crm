@@ -59,23 +59,34 @@ RSpec.feature "registered user may view all pages" , %Q(
     visit dashboard_path
 
     expect(page).to_not have_content("Create a new meeting")
+    expect(page).to have_content("You are not authorized to view this resource")
+    expect(current_path).to eq(root_path)
   end
 
   scenario "anonymous user can't view meeting show page" do
     visit meeting_path(meeting)
 
     expect(page).to_not have_content(meeting.name)
+    expect(page).to_not have_content("Create a new meeting")
+    expect(page).to have_content("You are not authorized to view this resource")
+    expect(current_path).to eq(root_path)
   end
 
   scenario "anonymous user can't view individual show page" do
     visit meeting_individual_path(meeting, individual)
 
     expect(page).to_not have_content(individual.first_name)
+    expect(page).to_not have_content("Create a new meeting")
+    expect(page).to have_content("You are not authorized to view this resource")
+    expect(current_path).to eq(root_path)
   end
 
   scenario "anonymous user can't view individual edit page" do
     visit edit_meeting_individual_path(meeting, individual)
 
     expect(page).to_not have_content(individual.first_name)
+    expect(page).to_not have_content("Create a new meeting")
+    expect(page).to have_content("You are not authorized to view this resource")
+    expect(current_path).to eq(root_path)
   end
 end
