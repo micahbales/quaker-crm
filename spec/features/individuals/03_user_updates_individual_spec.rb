@@ -12,9 +12,9 @@ RSpec.feature "user updates individual" , %Q(
   # [x] I must have created a meeting
   # [x] I must have created an individual
   # [x] I can visit an individual's profile page via the meeting page
-  # [] Via a link on the profile page, I can visit an update page to correct information
-  # [] If I update information correctly, I receive a notification
-  # [] If I leave a required field blank, I am informed of the error
+  # [x] Via a link on the profile page, I can visit an update page to correct information
+  # [x] If I update information correctly, I receive a notification
+  # [x] If I leave a required field blank, I am informed of the error
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
