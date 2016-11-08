@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
-  before_action :authorize_user!
-  
+  before_action :authorize_user!, :authorize_meeting_owner!
+
   def new
     @meeting = Meeting.new
   end
