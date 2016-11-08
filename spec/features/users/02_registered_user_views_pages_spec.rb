@@ -6,9 +6,9 @@ RSpec.feature "registered user may view all pages" , %Q(
 
   # Acceptance Criteria:
   #
-  # [] User must be logged in
-  # [] If user is logged in, they may view all pages
-  # [] If user is not logged in, they may only view the dashboard
+  # [x] User must be logged in
+  # [x] If user is logged in, they may view all pages
+  # [x] If user is not logged in, they may only view the dashboard
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
