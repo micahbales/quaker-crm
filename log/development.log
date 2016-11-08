@@ -3192,3 +3192,5 @@ Processing by MeetingsController#show as HTML
 Completed 200 OK in 46ms (Views: 41.0ms | ActiveRecord: 2.7ms)
 
 
+  [1m[36mIndividual Load (0.5ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals"[0m
+  [1m[36mIndividual Load (0.5ms)[0m  [1m[34mSELECT "individuals".* FROM "individuals"[0m

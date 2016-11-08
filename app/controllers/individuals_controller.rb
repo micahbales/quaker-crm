@@ -38,6 +38,9 @@ class IndividualsController < ApplicationController
       flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been updated!"
       redirect_to [@meeting, @individual]
     else
+      original_individual = Individual.find(@individual)
+      @individual.first_name = original_individual.first_name
+      @individual.last_name = original_individual.last_name
       flash[:errors] = @individual.errors.full_messages.to_sentence
       render :edit
     end

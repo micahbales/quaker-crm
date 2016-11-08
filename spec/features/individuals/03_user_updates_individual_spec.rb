@@ -68,6 +68,6 @@ RSpec.feature "user updates individual" , %Q(
     click_button("Update")
 
     expect(page).to have_content("First name can't be blank")
-    expect(page).to have_content("Update #{user.first_name} #{user.last_name}")
+    expect(page).to have_content("Edit #{individual.first_name} #{individual.last_name}")
   end
 end
