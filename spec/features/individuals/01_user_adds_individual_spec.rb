@@ -19,7 +19,7 @@ RSpec.feature "user adds individual" , %Q(
 
   scenario "user successfully adds individual to congregation" do
 
-    login_user
+    login_user(user)
     visit dashboard_path
     click_link("New City Friends Meeting")
     click_link("Add individual to New City Friends Meeting")
@@ -40,7 +40,7 @@ RSpec.feature "user adds individual" , %Q(
 
   scenario "individual is created as long as there is a name" do
 
-    login_user
+    login_user(user)
     visit dashboard_path
     click_link("New City Friends Meeting")
     click_link("Add individual to New City Friends Meeting")
@@ -54,7 +54,7 @@ RSpec.feature "user adds individual" , %Q(
 
   scenario "individual is not created when no name is provided" do
     
-    login_user
+    login_user(user)
     visit dashboard_path
     click_link("New City Friends Meeting")
     click_link("Add individual to New City Friends Meeting")

@@ -17,35 +17,35 @@ RSpec.feature "registered user may view all pages" , %Q(
   let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
 
   scenario "registered user may view home page" do
-    login_user
+    login_user(user)
     visit root_path
 
     expect(page).to have_content("Quaker CRM")
   end
 
   scenario "registered user may view dashboard" do
-    login_user
+    login_user(user)
     visit dashboard_path
 
     expect(page).to have_content(meeting.name)
   end
 
   scenario "registered user may view meeting show page" do
-    login_user
+    login_user(user)
     visit meeting_path(meeting)
 
     expect(page).to have_content(meeting.name)
   end
 
   scenario "registered user may view individual show page" do
-    login_user
+    login_user(user)
     visit meeting_individual_path(meeting, individual)
 
     expect(page).to have_content(individual.first_name)
   end
 
   scenario "registered user may view individual edit page" do
-    login_user
+    login_user(user)
     visit edit_meeting_individual_path(meeting, individual)
 
     expect(page).to have_content(individual.first_name)
