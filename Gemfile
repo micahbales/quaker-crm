@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'rb-readline'
 gem 'shoulda-matchers', require: false
 gem 'devise'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'capybara'
