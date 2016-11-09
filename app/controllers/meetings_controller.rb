@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :authorize_user!
-  after_action :authorize_meeting_owner!, only: [:show]
+  before_action :authorize_meeting_owner!, only: [:show]
 
   def new
     @meeting = Meeting.new
@@ -15,7 +15,6 @@ class MeetingsController < ApplicationController
       flash[:alert] = "Meeting Created!"
       redirect_to :dashboard
     else
-
       flash[:error] = @meeting.errors.full_messages.to_sentence
       render :new
     end
