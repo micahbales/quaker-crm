@@ -12,7 +12,7 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  def login_user
+  def login_user(user)
     visit new_user_session_path
     fill_in("Email", with: user.email)
     fill_in("Password", with: user.password)

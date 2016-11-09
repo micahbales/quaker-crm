@@ -21,7 +21,7 @@ RSpec.feature "user views individual" , %Q(
 
   scenario "visit individual page via meeting page" do
 
-    login_user
+    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
 
@@ -35,7 +35,7 @@ RSpec.feature "user views individual" , %Q(
 
   scenario "view details of second user on the list" do
 
-    login_user
+    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual2.first_name} #{individual2.last_name}")
 
