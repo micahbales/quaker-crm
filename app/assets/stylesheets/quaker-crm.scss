@@ -3,10 +3,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .columns {
+
   h1 {
-    margin: 0 auto;
     text-align: center;
     margin: 15px 0px 10px;
+  }
+  h2 {
+    margin-top: 15px;
   }
 }
 
