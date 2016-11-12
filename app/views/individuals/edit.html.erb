@@ -1,21 +1,27 @@
-<h1>Edit <%= @individual.first_name %> <%= @individual.last_name %></h1>
+<div class="row">
+  <div class="small-6 small-centered medium-8 columns">
 
-<%= form_for [@meeting, @individual], url: {action: "update" } do |f| %>
-  <%= f.label :first_name, "First Name" %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name, "Last Name" %>
-  <%= f.text_field :last_name %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-  <%= f.label :birthday %>
-  <%= select_date @individual.birthday, start_year: Date.today.year - 120, end_year: Date.today.year, order: [:day, :month, :year], prefix: :birthday %>
-  <%= f.label :notes %>
-  <%= f.text_field :notes %>
-  <%= f.submit "Update", class: "button" %>
-<% end %>
 
-<%= button_to "Delete Profile", meeting_individual_path, method: "delete", data: { confirm: "Are you sure you want to delete #{@individual.first_name} #{@individual.last_name}?" }, class: "button" %>
+    <h1>Edit <%= @individual.first_name %> <%= @individual.last_name %></h1>
+
+    <%= form_for [@meeting, @individual], url: {action: "update" } do |f| %>
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name %>
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name %>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+      <%= f.label :birthday %>
+      <%= select_date @individual.birthday, start_year: Date.today.year - 120, end_year: Date.today.year, order: [:day, :month, :year], prefix: :birthday %>
+      <%= f.label :notes %>
+      <%= f.text_field :notes %>
+      <%= f.submit "Update", class: "button" %>
+    <% end %>
+
+    <%= button_to "Delete Profile", meeting_individual_path, method: "delete", data: { confirm: "Are you sure you want to delete #{@individual.first_name} #{@individual.last_name}?" }, class: "button" %>
+  </div>
+</div>
