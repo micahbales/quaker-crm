@@ -5,5 +5,6 @@
     <li><%= "#{key}: #{value}" %></li>
     <% end %>
 </ul>
-<%= link_to "Update #{@individual.first_name}'s information", edit_meeting_individual_path(@meeting, @individual) %>
+<%= link_to "Update #{@individual.first_name}'s information", edit_meeting_individual_path(@meeting, @individual), class: "button" %>
+<br />
 <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>
