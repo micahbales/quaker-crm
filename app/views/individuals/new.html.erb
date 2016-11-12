@@ -1,20 +1,25 @@
-<h1>Add Individual</h1>
+<div class="row">
+  <div class="small-6 small-centered medium-8 columns">
 
-<%= form_for [@meeting, @individual] do |f| %>
-  <%= f.label :first_name, "First Name" %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name, "Last Name" %>
-  <%= f.text_field :last_name %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-  <%= f.label :birthday %>
-  <%= select_date Date.new(1950,1,1), start_year: Date.today.year - 120, end_year: Date.today.year, order: [:day, :month, :year], prefix: :birthday %>
-  <%= f.label :notes %>
-  <%= f.text_field :notes %>
-  <%= f.submit "Submit", class: "button" %>
+    <h1>Add Individual</h1>
 
-<% end %>
+    <%= form_for [@meeting, @individual] do |f| %>
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name %>
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name %>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+      <%= f.label :birthday %>
+      <%= select_date Date.new(1950,1,1), start_year: Date.today.year - 120, end_year: Date.today.year, order: [:day, :month, :year], prefix: :birthday %>
+      <%= f.label :notes %>
+      <%= f.text_field :notes %>
+      <%= f.submit "Submit", class: "button" %>
+
+    <% end %>
+  </div>
+</div>
