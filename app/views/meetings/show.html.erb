@@ -4,16 +4,23 @@
   </div>
 </div>
 <div class="row">
-  <div class="small-8 medium-4 small-centered text-center columns display-container">
+  <div class="small-6 medium-4 text-center columns display-container">
+    <h2>Meeting Details</h2>
+    <ul class="no-bullet">
+      <% @meeting.attributes.each do |key, value| %>
+        <li><%= attribute_filter(key, value) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="small-6 medium-4 text-center columns display-container">
     <% if @meeting.individuals %>
-      <h3>Friends</h3>
+      <h2>Friends</h2>
       <ul class="no-bullet">
         <% @meeting.individuals.each do |individual| %>
           <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual) %></li>
         <% end %>
       </ul>
     <% end %>
-
     <%= link_to "Add Friend", new_meeting_individual_path(@meeting), class: "button" %>
     <br />
     <%= link_to "Back to Dashboard", dashboard_path %>
