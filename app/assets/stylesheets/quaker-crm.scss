@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Cantata+One|Imprima');
+
+.columns {
+
+  h1 {
+    text-align: center;
+    margin: 15px 0px 10px;
+  }
+
+  h2, h3, h4, h5, h6 {
+    margin-top: 15px;
+  }
+}
+
+.meeting-column-img {
+  width: 400px;
+  margin: 0px 0px 15px;
+}
+
+.display-container {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.5);
+  padding: 25px;
+  margin-top: 18px;
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+}

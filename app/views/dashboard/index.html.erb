@@ -1,13 +1,24 @@
-<h1>Dashboard</h1>
-
-<ul>
-  <% if current_user && current_user.meetings %>
-    <% current_user.meetings.each do |meeting| %>
-      <li><%= link_to meeting.name, meeting_path(meeting) %></li>
-    <% end %>
-  <% else %>
-    <h3>You haven't set up your Meeting yet. <%= link_to "Click here to create a new meeting", new_meeting_path %>.</h3>
-  <% end %>
-</ul>
-
-(<%= link_to "Create a new meeting", new_meeting_path %>)
+<div class="row">
+  <div class="small-12 small-centered medium-8 columns">
+    <h1>Dashboard</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="small-2 columns"></div>
+  <div class="small-3 medium-3 columns text-center display-container">
+    <h2>My Meetings</h2>
+    <ul class="no-bullet">
+      <% if current_user && current_user.meetings %>
+        <% current_user.meetings.each do |meeting| %>
+          <li><%= link_to meeting.name, meeting_path(meeting) %></li>
+        <% end %>
+      <% else %>
+        <h2>You haven't set up your Meeting yet. <%= link_to "Click here to create a new meeting", new_meeting_path %>.</h2>
+      <% end %>
+      <br />
+      <%= link_to "Create a new meeting", new_meeting_path, class: "button" %>
+    </ul>
+  </div>
+  <div class="small-4 medium-3 columns"></div>
+  <div class="small-1 medium-3 columns"></div>
+</div>
