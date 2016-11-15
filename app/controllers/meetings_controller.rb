@@ -41,6 +41,18 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def destroy
+    @meeting = Meeting.find(params[:id])
+
+    if @meeting.delete
+      flash[:alert] = "#{@meeting.name} successfully deleted!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = @meeting.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
   private
 
   def meeting_params

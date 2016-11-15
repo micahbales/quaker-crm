@@ -10,10 +10,10 @@ RSpec.feature "user edits meeting" , %Q(
 
   # [x] I must be a logged in user
   # [x] I must have created a meeting
-  # [] When I visit the meeting show page, I have an option to edit the meeting
-  # [] I can change any of the meetings attributes
-  # [] If I do, I am shown a confirmation message
-  # [] If I leave a required field blank (name), I am shown an error message
+  # [x] When I visit the meeting show page, I have an option to edit the meeting
+  # [x] I can change any of the meetings attributes
+  # [x] If I do, I am shown a confirmation message
+  # [x] If I leave a required field blank (name), I am shown an error message
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }

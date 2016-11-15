@@ -10,8 +10,8 @@ RSpec.feature "user deletes meeting" , %Q(
 
   # [x] I must be a logged in user
   # [x] I must have created a meeting
-  # [] When I visit the meeting edit page, I have an option to delete the meeting
-  # [] If I delete the meeting, I am sent to the dashboard and notified that
+  # [x] When I visit the meeting edit page, I have an option to delete the meeting
+  # [x] If I delete the meeting, I am sent to the dashboard and notified that
   #    the meeting has been deleted
 
   let!(:user) { FactoryGirl.create(:user) }
