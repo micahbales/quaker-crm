@@ -7,8 +7,8 @@
   <div class="small-8 medium-4 small-centered text-center columns display-container">
     <ul class="no-bullet">
       <% @individual.attributes.each do |key, value| %>
-        <li><%= "#{key}: #{value}" %></li>
-        <% end %>
+        <li><%= attribute_filter(key, value) %></li>
+      <% end %>
     </ul>
     <%= link_to "Update #{@individual.first_name}'s information", edit_meeting_individual_path(@meeting, @individual), class: "button" %>
     <br />

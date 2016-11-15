@@ -17,7 +17,7 @@ class IndividualsController < ApplicationController
       redirect_to meeting_path(@meeting)
     else
       flash[:errors] = @individual.errors.full_messages.to_sentence
-      render 'meetings/new'
+      render :new
     end
   end
 
