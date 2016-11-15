@@ -11,6 +11,7 @@
         <li><%= attribute_filter(key, value) %></li>
       <% end %>
     </ul>
+    <%= link_to "Edit Meeting", edit_meeting_path(@meeting), class: "button" %>
   </div>
   <div class="small-6 medium-4 medium-offset-2 end text-center columns display-container">
     <% if @meeting.individuals %>

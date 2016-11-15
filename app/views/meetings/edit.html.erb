@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="small-8 small-centered medium-6 columns display-container">
+
+    <h1>Edit <%= @meeting.name %></h1>
+
+    <%= form_for @meeting, url: {action: "update" } do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+      <%= f.label :website %>
+      <%= f.text_field :website %>
+      <%= f.label :affiliation %>
+      <%= f.text_field :affiliation %>
+      <%= f.submit "Update", class: "button" %>
+    <% end %>
+
+    <%= button_to "Delete Meeting", meeting_path, method: "delete", data: { confirm: "Are you sure you want to delete #{@meeting.name}?" }, class: "button" %>
+  </div>
+</div>

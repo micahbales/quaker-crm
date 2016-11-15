@@ -6,7 +6,7 @@ RSpec.feature "user deletes meeting" , %Q(
   Because I no longer need its records
 ) do
 
-  Acceptance Criteria:
+  # Acceptance Criteria:
 
   # [x] I must be a logged in user
   # [x] I must have created a meeting
@@ -23,7 +23,7 @@ RSpec.feature "user deletes meeting" , %Q(
     visit dashboard_path
     click_link(meeting.name)
     click_link("Edit Meeting")
-    click_link("Delete Meeting")
+    click_button("Delete Meeting")
 
     expect(page).to have_content("#{meeting.name} successfully deleted!")
     expect(page).to have_content("Dashboard")

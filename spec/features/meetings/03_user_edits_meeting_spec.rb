@@ -6,7 +6,7 @@ RSpec.feature "user edits meeting" , %Q(
   To correct errors in its details
 ) do
 
-  Acceptance Criteria:
+  # Acceptance Criteria:
 
   # [x] I must be a logged in user
   # [x] I must have created a meeting
@@ -29,6 +29,7 @@ RSpec.feature "user edits meeting" , %Q(
     fill_in("Phone", with: "0987654321")
     fill_in("Website", with: "www.ncfm.org")
     fill_in("Affiliation", with: "Friends of Jesus Fellowship")
+    click_button("Update")
 
     expect(page).to have_content("#{meeting.name} successfully updated!")
     expect(page).to have_content(meeting.name)
@@ -41,6 +42,7 @@ RSpec.feature "user edits meeting" , %Q(
     click_link(meeting.name)
     click_link("Edit Meeting")
     fill_in("Phone", with: "0987654321")
+    click_button("Update")
 
     expect(page).to have_content("#{meeting.name} successfully updated!")
     expect(page).to have_content(meeting.name)
@@ -57,6 +59,7 @@ RSpec.feature "user edits meeting" , %Q(
     fill_in("Phone", with: "0987654321")
     fill_in("Website", with: "www.ncfm.org")
     fill_in("Affiliation", with: "Friends of Jesus Fellowship")
+    click_button("Update")
 
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content(meeting.name)
