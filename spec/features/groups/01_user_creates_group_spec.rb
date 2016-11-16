@@ -57,7 +57,7 @@ RSpec.feature "user creates group" , %Q(
     click_button("Submit")
 
     expect(current_path).to_not eq(meeting_path(meeting))
-    expect(page).to have_content("Ministry & Oversight")
-    expect(page).to have_content("Group Name can't be blank")
+    expect(page).to_not have_content("Ministry & Oversight")
+    expect(page).to have_content("Name can't be blank")
   end
 end
