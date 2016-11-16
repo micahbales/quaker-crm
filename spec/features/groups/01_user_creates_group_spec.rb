@@ -26,7 +26,6 @@ RSpec.feature "user creates group" , %Q(
     visit meeting_path(meeting)
     click_link("Add Group")
     fill_in("Group Name", with: "Ministry & Oversight")
-    select(meeting.name, from: "Meeting")
     fill_in("Description", with: "M&O works with the pastor to help discern God's will for the meeting, and to provide pastoral care to the congregation.")
     click_button("Submit")
 
@@ -41,7 +40,6 @@ RSpec.feature "user creates group" , %Q(
     visit meeting_path(meeting)
     click_link("Add Group")
     fill_in("Group Name", with: "Ministry & Oversight")
-    select(meeting.name, from: "Meeting")
     click_button("Submit")
 
     expect(current_path).to eq(dashboard_path)
@@ -54,7 +52,7 @@ RSpec.feature "user creates group" , %Q(
     login_user(user)
     visit meeting_path(meeting)
     click_link("Add Group")
-    select(meeting.name, from: "Meeting")
+
     fill_in("Description", with: "M&O works with the pastor to help discern God's will for the meeting, and to provide pastoral care to the congregation.")
     click_button("Submit")
 
