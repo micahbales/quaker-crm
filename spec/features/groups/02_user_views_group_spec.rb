@@ -8,14 +8,14 @@ RSpec.feature "user views group" , %Q(
 
   # Acceptance Criteria
   #
-  # [] I must be a logged in user
-  # [] I must have created a meeting
-  # [] I must have created a group
+  # [x] I must be a logged in user
+  # [x] I must have created a meeting
+  # [x] I must have created a group
   # [] When I visit my meeting's page, I can click a link to view my group
 
   let(:user) { FactoryGirl.create(:user) }
   let(:meeting) { FactoryGirl.create(:meeting, user: user) }
-  let(:group) { FactoryGirl.create(:group) }
+  let(:group) { FactoryGirl.create(:group, meeting: meeting) }
 
   scenario "user views group" do
 
