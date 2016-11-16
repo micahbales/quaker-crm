@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :meetings do
     resources :individuals
+    resources :groups
   end
   get 'dashboard', to: "dashboard#index", as: :dashboard
 end
