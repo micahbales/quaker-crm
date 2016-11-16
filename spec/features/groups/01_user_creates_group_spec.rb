@@ -9,16 +9,15 @@ RSpec.feature "user creates group" , %Q(
   # Acceptance Criteria:
 
   # [x] I must be a logged in user
-  # [x] I must have created a meeting and at least one individual
-  # [] On the dashboard, I am presented with an option to create a group
-  # [] I am redirected to a form where I can provide a name (required),
+  # [x] I must have created a meeting
+  # [x] On the dashboard, I am presented with an option to create a group
+  # [x] I am redirected to a form where I can provide a name (required),
   #    description, and meeting (required) for the group
-  # [] If I provide valid information, I receive a confirmation message
-  # [] If I fail to provide valid information, I receive an error
+  # [x] If I provide valid information, I receive a confirmation message
+  # [x] If I fail to provide valid information, I receive an error
 
   let(:user) { FactoryGirl.create(:user) }
   let(:meeting) { FactoryGirl.create(:meeting, user: user) }
-  let(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
 
   scenario "user successfully creates group (with description)" do
 
