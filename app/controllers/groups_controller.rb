@@ -19,6 +19,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @meeting = Meeting.find(params[:meeting_id])
+    @group = Group.find(params[:id])
+  end
+
   private
   def group_params
     params.require(:group).permit(:name, :description, :meeting_id)
