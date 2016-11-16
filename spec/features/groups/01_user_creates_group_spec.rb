@@ -11,8 +11,8 @@ RSpec.feature "user creates group" , %Q(
   # [x] I must be a logged in user
   # [x] I must have created a meeting and at least one individual
   # [] On the dashboard, I am presented with an option to create a group
-  # [] I am redirected to a form where I can provide a name (required)
-  #    and description for the group
+  # [] I am redirected to a form where I can provide a name (required),
+  #    description, and meeting (required) for the group
   # [] If I provide valid information, I receive a confirmation message
   # [] If I fail to provide valid information, I receive an error
 
@@ -26,6 +26,7 @@ RSpec.feature "user creates group" , %Q(
     visit dashboard_path
     click_link("Create a new group")
     fill_in("Group Name", with: "Ministry & Oversight")
+    select(meeting.name, from: "Meeting")
     fill_in("Description", with: "M&O works with the pastor to help discern God's will for the meeting, and to provide pastoral care to the congregation.")
     click_button("Submit")
 
@@ -40,6 +41,7 @@ RSpec.feature "user creates group" , %Q(
     visit dashboard_path
     click_link("Create a new group")
     fill_in("Group Name", with: "Ministry & Oversight")
+    select(meeting.name, from: "Meeting")
     click_button("Submit")
 
     expect(current_path).to eq(dashboard_path)
@@ -52,6 +54,7 @@ RSpec.feature "user creates group" , %Q(
     login_user(user)
     visit dashboard_path
     click_link("Create a new group")
+    select(meeting.name, from: "Meeting")
     fill_in("Description", with: "M&O works with the pastor to help discern God's will for the meeting, and to provide pastoral care to the congregation.")
     click_button("Submit")
 
