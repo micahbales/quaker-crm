@@ -3,5 +3,6 @@ class Meeting < ApplicationRecord
   validates :user_id, presence: true
 
   has_many :individuals
+  has_many :groups
   belongs_to :user
 end

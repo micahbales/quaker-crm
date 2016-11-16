@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "user adds individual" , %Q(
+RSpec.feature "user creates individual" , %Q(
   As a Quaker leader
   I want to add individuals to my meeting
   So that I can stay up-to-date on their information
