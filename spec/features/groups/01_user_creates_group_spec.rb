@@ -29,7 +29,7 @@ RSpec.feature "user creates group" , %Q(
     fill_in("Description", with: "M&O works with the pastor to help discern God's will for the meeting, and to provide pastoral care to the congregation.")
     click_button("Submit")
 
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(meeting_path(meeting))
     expect(page).to have_content("Ministry & Oversight")
     expect(page).to have_content("Group successfully created!")
   end
@@ -42,7 +42,7 @@ RSpec.feature "user creates group" , %Q(
     fill_in("Group Name", with: "Ministry & Oversight")
     click_button("Submit")
 
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(meeting_path(meeting))
     expect(page).to have_content("Ministry & Oversight")
     expect(page).to have_content("Group successfully created!")
   end
@@ -56,7 +56,7 @@ RSpec.feature "user creates group" , %Q(
     fill_in("Description", with: "M&O works with the pastor to help discern God's will for the meeting, and to provide pastoral care to the congregation.")
     click_button("Submit")
 
-    expect(current_path).to_not eq(dashboard_path)
+    expect(current_path).to_not eq(meeting_path(meeting))
     expect(page).to have_content("Ministry & Oversight")
     expect(page).to have_content("Group Name can't be blank")
   end
