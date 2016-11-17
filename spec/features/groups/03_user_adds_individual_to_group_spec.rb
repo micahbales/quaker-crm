@@ -22,10 +22,12 @@ RSpec.feature "user adds individual to group" , %Q(
   #     [] If I navigate to the group show page, I can see which users are part
   #        of that group
 
-  
+  let(:user) { FactoryGirl.create(:user) }
+  let(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  let!(:group) { FactoryGirl.create(:group, meeting: meeting) }
+  let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
 
   scenario "user successfully adds an individual to a group" do
-
 
   end
 end

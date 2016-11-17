@@ -21,7 +21,7 @@
 <div class="row centered">
   <div class="small-6 medium-4 medium-offset-1 text-center columns display-container">
 
-    <h2>Friends</h2>
+    <h2>People</h2>
     <% if @meeting.individuals %>
       <ul class="no-bullet">
         <% @meeting.individuals.each do |individual| %>
@@ -29,7 +29,7 @@
         <% end %>
       </ul>
     <% end %>
-    <%= link_to "Add Friend", new_meeting_individual_path(@meeting), class: "button" %>
+    <%= link_to "Add Individual", new_meeting_individual_path(@meeting), class: "button" %>
     <br />
     <%= link_to "Back to Dashboard", dashboard_path %>
   </div>
