@@ -29,5 +29,18 @@ RSpec.feature "user adds individual to group" , %Q(
 
   scenario "user successfully adds an individual to a group" do
 
+    login_user(user)
+    visit meeting_path(meeting)
+    click_link("#{individual.first_name} #{individual.last_name}")
+    select(group.name)
+    click_button("+")
+
+    expect(current_path).to eq(meeting_individual_path(meeting, individual))
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name} has been added to #{group.name}!")
+    expect(page).to have_content("#{group.name}")
+
+    visit meeting_group_path(meeting, group)
+
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name}")
   end
 end
