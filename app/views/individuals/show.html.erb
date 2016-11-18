@@ -10,6 +10,11 @@
         <li><%= attribute_filter(key, value) %></li>
       <% end %>
     </ul>
+    <%= form_for @group_assignment do |f| %>
+      <%= f.collection_select :groups, @meeting.groups, :id, :name, prompt: true %>
+      <%= f.submit "+", class: "button" %>
+    <% end %>
+    <br />
     <%= link_to "Update #{@individual.first_name}'s information", edit_meeting_individual_path(@meeting, @individual), class: "button" %>
     <br />
     <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>
