@@ -3,7 +3,7 @@ class GroupAssignmentsController < ApplicationController
   def create
     @meeting = Meeting.find(params["meeting_id"])
     @individual = Individual.find(params["individual_id"])
-    @group = Group.find(params["group_assignment"]["groups"])
+    @group = Group.find(params["group_assignment"]["group"])
     @group_assignment = GroupAssignment.new(group_id: @group.id, individual_id: @individual.id)
 
     if @group_assignment.save
