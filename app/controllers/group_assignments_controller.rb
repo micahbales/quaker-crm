@@ -1,8 +1,6 @@
 class GroupAssignmentsController < ApplicationController
 
   def create
-
-
     @meeting = Meeting.find(params["meeting_id"])
     @individual = Individual.find(params["individual_id"])
 
@@ -18,7 +16,7 @@ class GroupAssignmentsController < ApplicationController
         flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been added to #{@group.name}!"
         redirect_to meeting_individual_path(@meeting, @individual)
       else
-        flash[:alert] = @group_assignment.errors.full_messages.to_sentence
+        flash[:alert] = "#{@individual.first_name} #{@individual.last_name} is already a member of #{@group.name}!"
         redirect_to meeting_individual_path(@meeting, @individual)
       end
     end
