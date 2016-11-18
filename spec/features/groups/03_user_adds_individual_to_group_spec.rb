@@ -59,4 +59,22 @@ RSpec.feature "user adds individual to group" , %Q(
 
     expect(page).to_not have_content("#{individual.first_name} #{individual.last_name}")
   end
+
+  scenario "user selects group where individual is already member" do
+
+    login_user(user)
+    visit meeting_path(meeting)
+    click_link("#{individual.first_name} #{individual.last_name}")
+    select(group.name)
+    click_button("+")
+    
+    select(group.name)
+    click_button("+")
+
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name} is already a member of #{group.name}!")
+
+    visit meeting_group_path(meeting, group)
+
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name}")
+  end
 end
