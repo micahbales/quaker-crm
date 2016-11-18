@@ -12,6 +12,8 @@
     </ul>
     <%= form_for @group_assignment do |f| %>
       <%= f.collection_select :groups, @meeting.groups, :id, :name, prompt: true %>
+      <%= hidden_field_tag 'meeting_id', @meeting.id %>
+      <%= hidden_field_tag 'individual_id', @individual.id %>
       <%= f.submit "+", class: "button" %>
     <% end %>
     <br />
