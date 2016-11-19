@@ -13,13 +13,13 @@ RSpec.feature "user adds individual to group" , %Q(
   # [x] I must have created a group
   # [] When I visit the profile page of an individual, I have an option to add
   #    that individual to a group
-  # [] I can select an existing group from a drop-down select box
+  # [x] I can select an existing group from a drop-down select box
   # [] When I click to submit:
-  #     [] The individual is added to the group
-  #     [] I see a success message
+  #     [x] The individual is added to the group
+  #     [x] I see a success message
   #     [] I see the individual show page, with a list of which groups that
   #        individual is part of
-  #     [] If I navigate to the group show page, I can see which users are part
+  #     [x] If I navigate to the group show page, I can see which individuals are part
   #        of that group
 
   let(:user) { FactoryGirl.create(:user) }
@@ -38,6 +38,7 @@ RSpec.feature "user adds individual to group" , %Q(
     expect(current_path).to eq(meeting_individual_path(meeting, individual))
     expect(page).to have_content("#{individual.first_name} #{individual.last_name} has been added to #{group.name}!")
     expect(page).to have_content("#{group.name}")
+    expect(page).to have_content("Groups: #{individual.groups.first.name}")
 
     visit meeting_group_path(meeting, group)
 
@@ -67,7 +68,7 @@ RSpec.feature "user adds individual to group" , %Q(
     click_link("#{individual.first_name} #{individual.last_name}")
     select(group.name)
     click_button("+")
-    
+
     select(group.name)
     click_button("+")
 
