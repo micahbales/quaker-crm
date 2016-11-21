@@ -12,9 +12,9 @@
       <li>Groups:
         <% @individual.groups.each_with_index do |group, index| %>
           <% if index == @individual.groups.size - 1 %>
-            <%= "#{group.name}" %>
+            <%= link_to "#{group.name}", meeting_group_path(@meeting, group) %>
           <% else %>
-            <%= "#{group.name}, " %>
+            <%= link_to "#{group.name}, ", meeting_group_path(@meeting, group) %>
           <% end %>
         <% end %>
       </li>
