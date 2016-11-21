@@ -9,6 +9,15 @@
       <% @individual.attributes.each do |key, value| %>
         <li><%= attribute_filter(key, value) %></li>
       <% end %>
+      <li>Groups:
+        <% @individual.groups.each_with_index do |group, index| %>
+          <% if index == @individual.groups.size - 1 %>
+            <%= "#{group.name}" %>
+          <% else %>
+            <%= "#{group.name}, " %>
+          <% end %>
+        <% end %>
+      </li>
     </ul>
     <%= form_for @group_assignment do |f| %>
       <%= f.collection_select :group, @meeting.groups, :id, :name, include_blank: "Add/Remove #{@individual.first_name} from Group" %>
