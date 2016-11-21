@@ -9,7 +9,22 @@
       <% @individual.attributes.each do |key, value| %>
         <li><%= attribute_filter(key, value) %></li>
       <% end %>
+      <li>Groups:
+        <% @individual.groups.each_with_index do |group, index| %>
+          <% if index == @individual.groups.size - 1 %>
+            <%= link_to "#{group.name}", meeting_group_path(@meeting, group) %>
+          <% else %>
+            <%= link_to "#{group.name}, ", meeting_group_path(@meeting, group) %>
+          <% end %>
+        <% end %>
+      </li>
     </ul>
+    <%= form_for @group_assignment do |f| %>
+      <%= f.collection_select :group, @meeting.groups, :id, :name, include_blank: "Add/Remove #{@individual.first_name} from Group" %>
+      <%= hidden_field_tag 'meeting_id', @meeting.id %>
+      <%= hidden_field_tag 'individual_id', @individual.id %>
+      <%= f.submit "+", class: "button" %>
+    <% end %>
     <%= link_to "Update #{@individual.first_name}'s information", edit_meeting_individual_path(@meeting, @individual), class: "button" %>
     <br />
     <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>

@@ -24,6 +24,7 @@ class IndividualsController < ApplicationController
   def show
     @meeting = Meeting.find(params[:meeting_id])
     @individual = Individual.find(params[:id])
+    @group_assignment = GroupAssignment.new
   end
 
   def edit

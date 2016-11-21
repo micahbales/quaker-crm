@@ -5,6 +5,13 @@
 
     <p><%= @group.description %></p>
 
+    <h5>Members of <%= @group.name %></h5>
+    <ul class="no-bullet">
+      <% @group.individuals.each do |individual| %>
+        <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual) %></li>
+      <% end %>
+    </ul>
+
     <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>
   </div>
 </div>
