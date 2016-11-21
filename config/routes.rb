@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
   root "home#index"
-  resources :meetings do
-    resources :individuals
-    resources :groups
-  end
-  resources :group_assignments
   get 'dashboard', to: "dashboard#index", as: :dashboard
+  devise_for :users
+  resources :meetings do
+    resources :individuals, except: [:index]
+    resources :groups, except: [:index]
+  end
+  resources :group_assignments, only: [:create, :destroy]
+  post 'add_or_remove', to: "group_assignments#add_or_remove"
 end
