@@ -21,4 +21,12 @@ class GroupAssignmentsController < ApplicationController
       end
     end
   end
+
+  def add_or_remove
+    if params["commit"] == "+"
+      create
+    elsif params["commit"] == "-"
+      destroy
+    end
+  end
 end
