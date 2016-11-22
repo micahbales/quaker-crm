@@ -4,7 +4,7 @@ class GroupAssignmentsController < ApplicationController
     @meeting = Meeting.find(params["meeting_id"])
     @individual = Individual.find(params["individual_id"])
 
-    if params["group_assignment"]["group"].empty?
+    if params["group_assignment"]["group"].blank?
       flash[:alert] = "Please select a valid group!"
       redirect_to meeting_individual_path(@meeting, @individual)
     else
@@ -26,15 +26,15 @@ class GroupAssignmentsController < ApplicationController
     @meeting = Meeting.find(params["meeting_id"])
     @individual = Individual.find(params["individual_id"])
 
-    if params["group_assignment"]["group"].empty?
+    if params["group_assignment"]["group"].blank?
       flash[:alert] = "Please select a valid group!"
       redirect_to meeting_individual_path(@meeting, @individual)
     else
 
       @group = Group.find(params["group_assignment"]["group"])
-      @group_assignment = GroupAssignment.where(group_id: @group.id, individual_id: @individual.id)[0]
+      @group_assignment = GroupAssignment.where(group_id: @group.id, individual_id: @individual.id).first
 
-      if @group_assignment.nil? 
+      if @group_assignment.nil?
         flash[:alert] = "#{@individual.first_name} #{@individual.last_name} was not a member of #{@group.name}!"
         redirect_to meeting_individual_path(@meeting, @individual)
       else
