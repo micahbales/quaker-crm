@@ -24,6 +24,24 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def edit
+    @meeting = Meeting.find(params[:meeting_id])
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @meeting = Meeting.find(params[:meeting_id])
+    @group = Group.find(params[:id])
+
+    if @group.update(group_params)
+      flash[:alert] = "#{@group.name} successfully updated!"
+      redirect_to meeting_group_path(@meeting, @group)
+    else
+      flash[:error] = @group.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
   private
   def group_params
     params.require(:group).permit(:name, :description, :meeting_id)

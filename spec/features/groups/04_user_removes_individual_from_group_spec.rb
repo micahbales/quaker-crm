@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.feature "user removes individual from group" , %Q(
   As a Quaker leader

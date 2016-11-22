@@ -11,7 +11,8 @@
         <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual) %></li>
       <% end %>
     </ul>
-
+    <%= link_to "Edit Group", edit_meeting_group_path(@meeting, @group), class: "button" %>
+    <br />
     <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting), class: "button" %>
   </div>
 </div>
