@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :groups, except: [:index]
   end
   resources :group_assignments, only: [:create, :destroy]
-  post 'add_or_remove', to: "group_assignments#add_or_remove"
+  post '/group_assignments/add_or_remove', to: "group_assignments#add_or_remove"
 end
