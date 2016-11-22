@@ -10,8 +10,8 @@ RSpec.feature "user adds individual to group" , %Q(
   #
   # [x] I must be a logged in user
   # [x] I must have created a meeting
-  # [x] I must have created a group
-  # [] When I visit the profile page of an individual, I have an option to add
+  # [x] I must have created an individual and a group
+  # [x] When I visit the profile page of an individual, I have an option to add
   #    that individual to a group
   # [x] I can select an existing group from a drop-down select box
   # [x] When I click to submit:
