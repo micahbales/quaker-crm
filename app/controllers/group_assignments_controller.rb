@@ -1,5 +1,4 @@
 class GroupAssignmentsController < ApplicationController
-  before_action :authorize_user!, :authorize_individual_group_owner!
 
   def create
     @meeting = Meeting.find(params["meeting_id"])
