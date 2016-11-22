@@ -15,9 +15,52 @@ RSpec.feature "user updates group" , %Q(
   # [] If I provide valid information, the group is updated and I receive
   #    a confirmation message
   # [] If I leave the group's name blank, I am given an error message and
-  #    the group is not updated  
+  #    the group is not updated
 
-  scenario "" do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  let!(:group) { FactoryGirl.create(:group, meeting: meeting) }
 
+  scenario "user successfully updates group name and description" do
+
+    login_user(user)
+    visit meeting_group_path(meeting, group)
+    click_link("Edit Group")
+    fill_in("Group Name", with: group.name)
+    fill_in("Description", with: "yo, this group is great!")
+    click_button("Submit")
+
+    expect(current_path).to eq(meeting_group_path(meeting, group))
+    expect(page).to have_content("yo, this group is great!")
+    expect(page).to have_content("#{group.name} successfully updated!")
+  end
+
+  xscenario "user successfully updates group name, leaves description blank" do
+
+    login_user(user)
+    visit meeting_group_path(meeting, group)
+    click_link("Edit Group")
+    fill_in("Group Name", with: group.name)
+    fill_in("Description", with: "")
+    click_button("Submit")
+
+    expect(current_path).to eq(meeting_group_path(meeting, group))
+    expect(page).to have_content("yo, this group is great!")
+    expect(page).to have_content("#{group.name} successfully updated!")
+  end
+
+  xscenario "user leaves group name blank" do
+
+    login_user(user)
+    visit meeting_group_path(meeting, group)
+    click_link("Edit Group")
+    fill_in("Group Name", with: "")
+    fill_in("Description", with: "yo, this group is great!")
+    click_button("Submit")
+
+    expect(current_path).to eq(meeting_group_path(meeting, group))
+    expect(page).to have_content(group.name)
+    expect(page).to have_content(group.description)
+    expect(page).to have_content("Name can't be blank")
   end
 end
