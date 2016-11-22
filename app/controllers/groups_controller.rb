@@ -24,6 +24,11 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def edit
+    @meeting = Meeting.find(params[:meeting_id])
+    @group = Group.find(params[:id])
+  end
+
   private
   def group_params
     params.require(:group).permit(:name, :description, :meeting_id)
