@@ -32,7 +32,7 @@ RSpec.feature "user removes individual from group" , %Q(
   let!(:group_assignment2) { FactoryGirl.create(:group_assignment, individual: individual, group: group2) }
   let!(:group_assignment3) { FactoryGirl.create(:group_assignment, individual: individual, group: group3) }
 
-  scenario "user successfully removes an individual to a group" do
+  scenario "user successfully removes an individual from a group" do
 
     login_user(user)
     visit meeting_path(meeting)
@@ -52,7 +52,7 @@ RSpec.feature "user removes individual from group" , %Q(
     expect(page).to_not have_content("#{individual.first_name} #{individual.last_name}")
   end
 
-  scenario "user removes individual to 3 groups" do
+  scenario "user removes individual from 3 groups" do
 
     login_user(user)
     visit meeting_path(meeting)
