@@ -8,11 +8,11 @@ RSpec.feature "user removes individual from group" , %Q(
 
   # Acceptance Criteria:
   #
-  # [] I must be a logged in user
-  # [] I must have created a meeting
-  # [] I must have created an individual and a group
-  # [] I must have added an individual to a group
-  # [] I can select a group from a drop-down select box
+  # [x] I must be a logged in user
+  # [x] I must have created a meeting
+  # [x] I must have created an individual and a group
+  # [x] I must have added an individual to a group
+  # [x] I can select a group from a drop-down select box
   # [] When I click the "-" button:
   #     [] The individual is removed from the group
   #     [] I see a success message
@@ -29,8 +29,8 @@ RSpec.feature "user removes individual from group" , %Q(
   let!(:group4) { FactoryGirl.create(:group, meeting: meeting) }
   let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
   let!(:group_assignment) { FactoryGirl.create(:group_assignment, individual: individual, group: group) }
-  let!(:group_assignment) { FactoryGirl.create(:group_assignment, individual: individual, group: group2) }
-  let!(:group_assignment) { FactoryGirl.create(:group_assignment, individual: individual, group: group3) }
+  let!(:group_assignment2) { FactoryGirl.create(:group_assignment, individual: individual, group: group2) }
+  let!(:group_assignment3) { FactoryGirl.create(:group_assignment, individual: individual, group: group3) }
 
   scenario "user successfully removes an individual to a group" do
 
@@ -45,14 +45,14 @@ RSpec.feature "user removes individual from group" , %Q(
 
     expect(current_path).to eq(meeting_individual_path(meeting, individual))
     expect(page).to have_content("#{individual.first_name} #{individual.last_name} has been removed from #{group.name}!")
-    expect(page).to_not have_content("Groups: #{individual.groups.first.name}")
+    expect(page).to_not have_content("Groups: #{group}")
 
     visit meeting_group_path(meeting, group)
 
     expect(page).to_not have_content("#{individual.first_name} #{individual.last_name}")
   end
 
-  xscenario "user removes individual to 3 groups" do
+  scenario "user removes individual to 3 groups" do
 
     login_user(user)
     visit meeting_path(meeting)
@@ -72,7 +72,7 @@ RSpec.feature "user removes individual from group" , %Q(
     expect(page).to_not have_content("Groups: #{individual.groups.first.name}, #{individual.groups[1].name}, #{individual.groups[2].name}")
   end
 
-  xscenario "user selects group where individual is not a member" do
+  scenario "user selects group where individual is not a member" do
 
     login_user(user)
     visit meeting_path(meeting)
@@ -80,6 +80,6 @@ RSpec.feature "user removes individual from group" , %Q(
     select(group4.name)
     click_button("-")
 
-    expect(page).to have_content("#{individual.first_name} #{individual.last_name} was already not a member of #{group.name}!")
+    expect(page).to have_content("#{individual.first_name} #{individual.last_name} was not a member of #{group4.name}!")
   end
 end
