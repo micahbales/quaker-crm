@@ -35,7 +35,7 @@ RSpec.feature "user updates group" , %Q(
     expect(page).to have_content("#{group.name} successfully updated!")
   end
 
-  xscenario "user successfully updates group name, leaves description blank" do
+  scenario "user successfully updates group name, leaves description blank" do
 
     login_user(user)
     visit meeting_group_path(meeting, group)
@@ -45,11 +45,10 @@ RSpec.feature "user updates group" , %Q(
     click_button("Submit")
 
     expect(current_path).to eq(meeting_group_path(meeting, group))
-    expect(page).to have_content("yo, this group is great!")
     expect(page).to have_content("#{group.name} successfully updated!")
   end
 
-  xscenario "user leaves group name blank" do
+  scenario "user leaves group name blank" do
 
     login_user(user)
     visit meeting_group_path(meeting, group)
@@ -59,8 +58,6 @@ RSpec.feature "user updates group" , %Q(
     click_button("Submit")
 
     expect(current_path).to eq(meeting_group_path(meeting, group))
-    expect(page).to have_content(group.name)
-    expect(page).to have_content(group.description)
     expect(page).to have_content("Name can't be blank")
   end
 end
