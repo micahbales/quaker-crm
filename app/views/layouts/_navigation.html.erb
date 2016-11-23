@@ -9,12 +9,12 @@
     </ul>
   </div>
   <div class="top-bar-right">
-    <ul class="menu">
-      <%= form_tag(search_path, controller: "search_controller", method: "get") do %>
-        <li><%= text_field_tag :search %></li>
-        <li><%= submit_tag "Search", class: "button" %></li>
-      <% end %>
-    </ul>
+    <%= form_tag(search_path, controller: "search_controller", method: "get", id: "search-form") do %>
+      <ul class="menu">
+      <li><%= text_field_tag "Search", "", id: "search-field" %></li>
+      <li><%= submit_tag "Search", class: "button" %></li>
+      </ul>
+    <% end %>
   </div>
     <% else %>
       <li><%= link_to 'Sign In', new_user_session_path %></li>
