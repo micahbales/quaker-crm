@@ -1,4 +1,6 @@
 class Group < ApplicationRecord
+  include PgSearch
+
   validates :name, presence: true
   validates :meeting_id, presence: true
 
