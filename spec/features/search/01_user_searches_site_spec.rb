@@ -27,8 +27,9 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for individual" do
 
+    login_user(user)
     visit root_path
-    fill_in("Search", with: "#{individual.first_name}")
+    fill_in("Search", id: "search-field", with: "#{individual.first_name}")
     click_button("Search")
 
     # confirm current_path once known
@@ -39,6 +40,7 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for individual created by another account" do
 
+    login_user(user)
     visit root_path
     fill_in("Search", with: "#{another_individual.first_name}")
     click_button("Search")
@@ -51,6 +53,7 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for group" do
 
+    login_user(user)
     visit root_path
     fill_in("Search", with: "#{group.name}")
     click_button("Search")
@@ -62,6 +65,8 @@ RSpec.feature "user searches site" , %Q(
   end
 
   scenario "user searches for group created by another account" do
+
+    login_user(user)
     visit root_path
     fill_in("Search", with: "#{another_group.name}")
     click_button("Search")
@@ -73,6 +78,8 @@ RSpec.feature "user searches site" , %Q(
   end
 
   scenario "user searches for meeting" do
+
+    login_user(user)
     visit root_path
     fill_in("Search", with: "#{meeting.name}")
     click_button("Search")
@@ -84,6 +91,8 @@ RSpec.feature "user searches site" , %Q(
   end
 
   scenario "user searches for meeting created by another account" do
+
+    login_user(user)
     visit root_path
     fill_in("Search", with: "#{another_meeting.name}")
     click_button("Search")
