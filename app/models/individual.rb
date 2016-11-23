@@ -1,5 +1,6 @@
 class Individual < ApplicationRecord
   include PgSearch
+  multisearchable against: [:first_name, :last_name, :address, :email, :phone, :birthday, :notes]
 
   validates :first_name, presence: true
   validates :last_name, presence: true
