@@ -1,7 +1,13 @@
-<h1>Results for "<%= params["Search"] %>"</h1>
+<div class="row">
+  <div class="small-8 small-centered medium-6 columns text-center display-container">
 
-<ul class="no-bullet">
-  <% @search_results.each do |result| %>
-    <li><%= multisearch_result_filter(result) %></li>
-  <% end %>
-</ul>
+    <h1>Results for "<%= params["Search"] %>"</h1>
+
+    <ul class="no-bullet">
+      <% @search_results.each do |result| %>
+        <li><%= multisearch_result_filter(result) %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
