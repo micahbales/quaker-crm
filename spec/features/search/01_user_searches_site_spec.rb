@@ -10,11 +10,11 @@ RSpec.feature "user searches site" , %Q(
   #
   # [x] I must be a logged in user
   # [x] I must have created a meeting, an individual, and a group
-  # [] When I enter a search term into the search bar at the top right hand side
+  # [x] When I enter a search term into the search bar at the top right hand side
   #    of the page, and click "Submit", I am presented with a list of search results
   #    that includes any individual, group, or meeting that meets those criteria
-  # [] If no matching terms are found, I receive an error message
-  # [] The search only returns results that my user account has created
+  # [x] If no matching terms are found, I receive an error message
+  # [x] The search only returns results that my user account has created
 
   let(:user) { FactoryGirl.create(:user) }
   let(:another_user) { FactoryGirl.create(:user) }
