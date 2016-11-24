@@ -10,17 +10,17 @@ module ApplicationHelper
     if result.searchable_type == "Meeting"
       #return meeting data
       meeting = Meeting.find(result.searchable_id)
-      "#{meeting.name}"
+      link_to "#{meeting.name}", meeting_path(meeting)
     elsif result.searchable_type == "Individual"
       #return individual data
       individual = Individual.find(result.searchable_id)
       meeting = Meeting.find(individual.meeting_id)
-      "#{individual.first_name} #{individual.last_name}"
+      link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(meeting, individual)
     elsif result.searchable_type == "Group"
       #return group data
       group = Group.find(result.searchable_id)
       meeting = Meeting.find(group.meeting_id)
-      "#{group.name}"
+      link_to "#{group.name}", meeting_group_path(meeting, group)
     end
   end
 end
