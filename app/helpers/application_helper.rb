@@ -7,20 +7,24 @@ module ApplicationHelper
   end
 
   def multisearch_result_filter(result)
+
+    def verify_user(output)
+      if @meeting.user_id == current_user.id
+        output
+      end
+    end
+
     if result.searchable_type == "Meeting"
-      #return meeting data
-      meeting = Meeting.find(result.searchable_id)
-      link_to "#{meeting.name}", meeting_path(meeting)
+      @meeting = Meeting.find(result.searchable_id)
+      verify_user(link_to "#{@meeting.name}", meeting_path(@meeting))
     elsif result.searchable_type == "Individual"
-      #return individual data
       individual = Individual.find(result.searchable_id)
-      meeting = Meeting.find(individual.meeting_id)
-      link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(meeting, individual)
+      @meeting = Meeting.find(individual.meeting_id)
+      verify_user(link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual))
     elsif result.searchable_type == "Group"
-      #return group data
       group = Group.find(result.searchable_id)
-      meeting = Meeting.find(group.meeting_id)
-      link_to "#{group.name}", meeting_group_path(meeting, group)
+      @meeting = Meeting.find(group.meeting_id)
+      verify_user(link_to "#{group.name}", meeting_group_path(@meeting, group))
     end
   end
 end
