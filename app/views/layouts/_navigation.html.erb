@@ -9,10 +9,12 @@
     </ul>
   </div>
   <div class="top-bar-right">
-    <ul class="menu">
-      <li><input type="search" placeholder="Still in Development"></li>
-      <li><button type="button" class="button">Search</button></li>
-    </ul>
+    <%= form_tag(search_path, controller: "search_controller", method: "get", id: "search-form") do %>
+      <ul class="menu">
+      <li><%= text_field_tag "Search", "", id: "search-field" %></li>
+      <li><%= submit_tag "Search", class: "button" %></li>
+      </ul>
+    <% end %>
   </div>
     <% else %>
       <li><%= link_to 'Sign In', new_user_session_path %></li>
