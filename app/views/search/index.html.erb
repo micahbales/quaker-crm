@@ -1,7 +1,7 @@
-<h1>Search Results</h1>
+<h1>Results for "<%= params["Search"] %>"</h1>
 
 <ul class="no-bullet">
   <% @search_results.each do |result| %>
-    <li><%= result.searchable_id %> <%= result.content %></li>
+    <li><%= multisearch_result_filter(result) %></li>
   <% end %>
 </ul>
