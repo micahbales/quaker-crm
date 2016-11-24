@@ -32,10 +32,9 @@ RSpec.feature "user searches site" , %Q(
     fill_in("Search", id: "search-field", with: "#{individual.first_name}")
     click_button("Search")
 
-    # confirm current_path once known
-    expect(page).to have_content
+    expect(current_path).to eq(search_path)
+    expect(page).to have_content("Results for")
     expect(page).to have_content("#{individual.first_name}")
-    expect(page).to have_content("Results for \"#{individual.first_name}\"")
   end
 
   scenario "user searches for individual created by another account" do
@@ -45,10 +44,10 @@ RSpec.feature "user searches site" , %Q(
     fill_in("Search", with: "#{another_individual.first_name}")
     click_button("Search")
 
-    # confirm current_path once known
-    expect(page).to have_content
+    expect(current_path).to eq(search_path)
+    expect(page).to have_content("Results for")
+    expect(page).to have_content("#{another_individual.first_name}")
     expect(page).to have_content("No results found. Please try another search.")
-    expect(page).to have_content("Results for \"#{another_individual.first_name}\"")
   end
 
   scenario "user searches for group" do
@@ -58,10 +57,9 @@ RSpec.feature "user searches site" , %Q(
     fill_in("Search", with: "#{group.name}")
     click_button("Search")
 
-    # confirm current_path once known
-    expect(page).to have_content
+    expect(current_path).to eq(search_path)
+    expect(page).to have_content("Results for")
     expect(page).to have_content("#{group.name}")
-    expect(page).to have_content("Results for \"#{group.name}\"")
   end
 
   scenario "user searches for group created by another account" do
@@ -71,10 +69,10 @@ RSpec.feature "user searches site" , %Q(
     fill_in("Search", with: "#{another_group.name}")
     click_button("Search")
 
-    # confirm current_path once known
-    expect(page).to have_content
+    expect(current_path).to eq(search_path)
+    expect(page).to have_content("Results for")
+    expect(page).to have_content("#{another_group.name}")
     expect(page).to have_content("No results found. Please try another search.")
-    expect(page).to have_content("Results for \"#{another_group.name}\"")
   end
 
   scenario "user searches for meeting" do
@@ -84,10 +82,9 @@ RSpec.feature "user searches site" , %Q(
     fill_in("Search", with: "#{meeting.name}")
     click_button("Search")
 
-    # confirm current_path once known
-    expect(page).to have_content
+    expect(current_path).to eq(search_path)
+    expect(page).to have_content("Results for")
     expect(page).to have_content("#{meeting.name}")
-    expect(page).to have_content("Results for \"#{meeting.name}\"")
   end
 
   scenario "user searches for meeting created by another account" do
@@ -97,9 +94,9 @@ RSpec.feature "user searches site" , %Q(
     fill_in("Search", with: "#{another_meeting.name}")
     click_button("Search")
 
-    # confirm current_path once known
-    expect(page).to have_content
+    expect(current_path).to eq(search_path)
+    expect(page).to have_content("Results for")
+    expect(page).to have_content("#{another_meeting.name}")
     expect(page).to have_content("No results found. Please try another search.")
-    expect(page).to have_content("Results for \"#{another_meeting.name}\"")
   end
 end
