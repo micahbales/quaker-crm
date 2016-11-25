@@ -31,8 +31,8 @@ RSpec.feature "user edits meeting" , %Q(
     fill_in("Affiliation", with: "Friends of Jesus Fellowship")
     click_button("Update")
 
-    expect(page).to have_content("#{meeting.name} successfully updated!")
-    expect(page).to have_content(meeting.name)
+    expect(page).to have_content("New City Friends Meeting successfully updated!")
+    expect(page).to have_content("New City Friends Meeting")
   end
 
   scenario "meeting update successful with only one attribute updated" do

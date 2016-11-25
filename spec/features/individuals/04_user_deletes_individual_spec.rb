@@ -13,8 +13,8 @@ RSpec.feature "user deletes individual" , %Q(
   # [x] I must have created an individual
   # [x] I can visit an individual's profile page via the meeting page
   # [x] Via a link on the profile page, I can visit the update page
-  # [] On the update page, I have an option to delete the individual
-  # [] If I click to delete, I receive a notification that the individual has
+  # [x] On the update page, I have an option to delete the individual
+  # [x] If I click to delete, I receive a notification that the individual has
   #    been deleted from the meeting
 
   let!(:user) { FactoryGirl.create(:user) }
