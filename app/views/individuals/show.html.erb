@@ -10,6 +10,7 @@
         <li><%= attribute_filter(key, value) %></li>
       <% end %>
       <li>Groups:
+        <em><%= "none" unless @individual.groups.size > 0 %></em>
         <% @individual.groups.each_with_index do |group, index| %>
           <% if index == @individual.groups.size - 1 %>
             <%= link_to "#{group.name}", meeting_group_path(@meeting, group) %>

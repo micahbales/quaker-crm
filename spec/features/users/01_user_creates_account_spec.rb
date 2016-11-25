@@ -26,6 +26,7 @@ RSpec.feature "user creates account" , %Q(
     fill_in("Confirm Password", with: "password")
     click_button("Submit")
 
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Your account has been created!")
   end
 

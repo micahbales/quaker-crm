@@ -34,7 +34,7 @@ RSpec.feature "user creates individual" , %Q(
     fill_in("Notes", with: "Great guy.")
     click_button("Submit")
 
-    expect(page).to have_content("Jim Bo has been added to New City Friends Meeting!")
+    expect(page).to have_content("Jim Bo has been added to #{meeting.name}!")
     expect(page).to have_content("Friends")
   end
 
@@ -48,7 +48,7 @@ RSpec.feature "user creates individual" , %Q(
     fill_in("Last Name", with: "Bo")
     click_button("Submit")
 
-    expect(page).to have_content("Jim Bo has been added to New City Friends Meeting!")
+    expect(page).to have_content("Jim Bo has been added to #{meeting.name}!")
     expect(page).to have_content("Friends")
   end
 
