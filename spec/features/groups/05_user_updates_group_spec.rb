@@ -11,10 +11,10 @@ RSpec.feature "user updates group" , %Q(
   # [x] I must be a logged in user
   # [x] I must have created a meeting
   # [x] I must have created a group
-  # [] I have an option to update my group
-  # [] If I provide valid information, the group is updated and I receive
+  # [x] I have an option to update my group
+  # [x] If I provide valid information, the group is updated and I receive
   #    a confirmation message
-  # [] If I leave the group's name blank, I am given an error message and
+  # [x] If I leave the group's name blank, I am given an error message and
   #    the group is not updated
 
   let(:user) { FactoryGirl.create(:user) }
