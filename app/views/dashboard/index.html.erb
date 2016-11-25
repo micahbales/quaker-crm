@@ -3,9 +3,10 @@
     <h1>Dashboard</h1>
   </div>
 </div>
-<div class="row">
-  <div class="small-2 columns"></div>
-  <div class="small-4 medium-3 columns text-center display-container">
+
+<div class="row small-up-1 medium-up-3">
+
+  <div class="column display-container callout text-center">
     <h2>My Meetings</h2>
     <ul class="no-bullet">
       <% if current_user && current_user.meetings %>
@@ -19,7 +20,35 @@
       <%= link_to "Create a new meeting", new_meeting_path, class: "button" %>
     </ul>
   </div>
-  <div class="small-1 medium-3 columns"></div>
-  <div class="small-4 medium-3 columns"></div>
+
+  <div class="column display-container callout text-center">
+    <h2>My People</h2>
+    <ul class="no-bullet">
+      <% if current_user && current_user.meetings %>
+        <% current_user.meetings.each do |meeting| %>
+          <% meeting.individuals.each do |individual| %>
+            <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(meeting, individual) %></li>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h2>You haven't added any people yet. Create or visit a Meeting to add someone.</h2>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="column display-container callout text-center">
+    <h2>My Groups</h2>
+    <ul class="no-bullet">
+      <% if current_user && current_user.meetings %>
+        <% current_user.meetings.each do |meeting| %>
+          <% meeting.groups.each do |group| %>
+            <li><%= link_to group.name, meeting_group_path(meeting, group) %></li>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h2>You haven't added any groups yet. Create or visit a Meeting to add someone.</h2>
+      <% end %>
+    </ul>
+  </div>
 
 </div>
