@@ -13,6 +13,8 @@ RSpec.feature "registered user may view resources that they created" , %Q(
   # [x] I do not see Meetings that my user did not create
   # [x] If I visit a URL for a resource that is not my own, I am redirected
   #    to my dashboard and receive an error message
+  # [x] If I visit a URL for a resource that does not exist, I am redirected
+  #    to my dashboard and receive an error message
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:user2) { FactoryGirl.create(:user) }
@@ -82,6 +84,21 @@ RSpec.feature "registered user may view resources that they created" , %Q(
     visit(edit_meeting_group_path(meeting2, individual2))
 
     expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("You are not authorized to view this resource")
+  end
+
+  scenario "registered user can't visit resource that doesn't exist" do
+    login_user(user)
+    visit(meeting_group_path(0, 0))
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("You are not authorized to view this resource")
+  end
+
+  scenario "anonymous user can't visit resource that doesn't exist" do
+    visit(meeting_group_path(0, 0))
+
+    expect(current_path).to eq(root_path)
     expect(page).to have_content("You are not authorized to view this resource")
   end
 end
