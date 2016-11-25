@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def after_sign_in_path_for(user)
+    dashboard_path
+  end
+
   def authorize_user!
     if current_user.nil?
       flash[:notice] = "You are not authorized to view this resource"
