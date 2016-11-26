@@ -4,10 +4,11 @@
   </div>
 </div>
 
-<div class="row small-centered medium-11">
-  <div class="row small-up-1 medium-up-3 large-up-3">
-    <div class="column">
-      <div class="display-container callout text-center">
+<div class="row small-centered medium-11" data-equalizer data-equalize-on="medium" id="test-eq">
+  <div class="small-up-1 medium-up-3 large-up-3">
+
+    <div class="columns">
+      <div class="display-container callout text-center" data-equalizer-watch>
         <h2>My Meetings</h2>
         <ul class="no-bullet">
           <% if current_user && current_user.meetings %>
@@ -22,8 +23,9 @@
         </ul>
       </div>
     </div>
-    <div class="column">
-      <div class="display-container callout text-center">
+
+    <div class="columns">
+      <div class="display-container callout text-center" data-equalizer-watch>
         <h2>My People</h2>
         <ul class="no-bullet">
           <% if current_user && current_user.meetings %>
@@ -38,8 +40,9 @@
         </ul>
       </div>
     </div>
-    <div class="column">
-      <div class="display-container callout text-center">
+
+    <div class="columns">
+      <div class="display-container callout text-center"data-equalizer-watch>
         <h2>My Groups</h2>
         <ul class="no-bullet">
           <% if current_user && current_user.meetings %>
@@ -54,5 +57,6 @@
         </ul>
       </div>
     </div>
+
   </div>
 </div>
