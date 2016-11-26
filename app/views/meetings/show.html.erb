@@ -18,32 +18,36 @@
   </div>
 </div>
 
-<div class="row centered">
-  <div class="small-6 medium-4 medium-offset-1 text-center columns display-container">
+<div class="row centered" data-equalizer data-equalize-on="medium" id="test-eq">
+  <div class="columns small-6 medium-4 medium-offset-1">
+    <div class="text-center display-container" data-equalizer-watch>
 
-    <h2>People</h2>
-    <% if @meeting.individuals %>
-      <ul class="no-bullet">
-        <% @meeting.individuals.each do |individual| %>
-          <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual) %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    <%= link_to "Add Individual", new_meeting_individual_path(@meeting), class: "button" %>
-    <br />
+      <h2>People</h2>
+      <% if @meeting.individuals %>
+        <ul class="no-bullet">
+          <% @meeting.individuals.each do |individual| %>
+            <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <%= link_to "Add Individual", new_meeting_individual_path(@meeting), class: "button" %>
+      <br />
+    </div>
   </div>
 
-  <div class="small-6 medium-4 medium-offset-2 end text-center columns display-container">
+  <div class="columns small-6 medium-4 medium-offset-2 end">
+    <div class="text-center display-container" data-equalizer-watch>
 
-    <h2>Groups</h2>
-    <% if @meeting.groups %>
-      <ul class="no-bullet">
-        <% @meeting.groups.each do |group| %>
-          <li><%= link_to "#{group.name}", meeting_group_path(@meeting, group) %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    <%= link_to "Add Group", new_meeting_group_path(@meeting), class: "button" %>
-    <br />
+      <h2>Groups</h2>
+      <% if @meeting.groups %>
+        <ul class="no-bullet">
+          <% @meeting.groups.each do |group| %>
+            <li><%= link_to "#{group.name}", meeting_group_path(@meeting, group) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <%= link_to "Add Group", new_meeting_group_path(@meeting), class: "button" %>
+      <br />
+    </div>
   </div>
 </div>
