@@ -1,10 +1,6 @@
-<div class="row">
-  <div class="small-12 text-center columns">
-    <h1><%= @individual.first_name %> <%= @individual.last_name %></h1>
-  </div>
-</div>
-<div class="row">
+<div class="row top-page-element">
   <div class="small-8 medium-4 small-centered text-center columns display-container">
+    <h1><%= @individual.first_name %> <%= @individual.last_name %></h1>
     <ul class="no-bullet">
       <% @individual.attributes.each do |key, value| %>
         <li><%= attribute_filter(key, value) %></li>
@@ -41,6 +37,6 @@
 
     <%= link_to "Update #{@individual.first_name}'s information", edit_meeting_individual_path(@meeting, @individual), class: "button" %>
     <br />
-    <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting), class: "button" %>
+    <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>
   </div>
 </div>

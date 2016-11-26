@@ -1,12 +1,12 @@
-<div class="row">
+<div class="row top-page-element">
   <div class="small-12 text-center columns">
-    <h1><%= @meeting.name %></h1>
+
   </div>
 </div>
 
 <div class="row">
   <div class="small-12 medium-6 medium-centered text-center columns display-container">
-    <h2>Meeting Details</h2>
+    <h1><%= @meeting.name %></h1>
     <ul class="no-bullet">
       <% @meeting.attributes.each do |key, value| %>
         <li><%= attribute_filter(key, value) %></li>
