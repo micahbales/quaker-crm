@@ -55,6 +55,14 @@
   }
 }
 
+.callout {
+  text-align: center;
+
+  .alert {
+    background-color: rgba(236,88,64,.7);
+  }
+}
+
 /* Small only */
 @media screen and (max-width: 39.9375em) {
   .display-container {
