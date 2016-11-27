@@ -9,6 +9,7 @@ gem 'rb-readline'
 gem 'shoulda-matchers', require: false
 gem 'devise'
 gem 'foundation-rails'
+gem "font-awesome-rails"
 gem 'pg_search'
 
 group :development, :test do
