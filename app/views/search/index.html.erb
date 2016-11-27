@@ -3,17 +3,16 @@
 
     <h1>Results for &#8220;<%= params["Search"] %>&#8221;</h1>
 
-    <ul class="no-bullet" id="search-results">
-      <% @search_results.each do |result| %>
-        <li><%= multisearch_result_filter(result) %></li>
-      <% end %>
-    </ul>
-    <%= javascript_tag do %>
-      if ( $('#search-results li').length < 1 || $('#search-results li').first().html() == "" ) {
-        $(".display-container").append("<p>No results found. Please try another search.</p>")
-      }
+    <% if @search_results.empty? %>
+      <p>No results found. Please try another search.</p>
+    <% else %>
+      <ul class="no-bullet" id="search-results">
+        <% @search_results.each do |result| %>
+          <li><%= multisearch_result_filter(result) %></li>
+        <% end %>
+      </ul>
     <% end %>
-    <noscript>For testing purposes: "No results found. Please try another search."</noscript>
+
     <%= link_to "Back to dashboard", dashboard_path %>
   </div>
 </div>
