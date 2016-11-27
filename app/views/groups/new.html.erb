@@ -1,13 +1,11 @@
 <div class="row">
-  <div class="small-8 small-centered medium-6 columns display-container">
+  <div class="small-8 small-centered text-center medium-6 columns display-container">
 
     <h1>Create a Group</h1>
 
     <%= form_for [@meeting, @group] do |f| %>
-      <%= f.label :name, "Group Name" %>
-      <%= f.text_field :name %>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+      <%= f.text_field :name, placeholder: "Group Name" %>
+      <%= f.text_area :description, placeholder: "Description" %>
       <%= f.submit "Submit", class: "button" %>
     <% end %>
   </div>

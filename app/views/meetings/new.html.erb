@@ -1,19 +1,14 @@
 <div class="row">
-  <div class="small-8 small-centered medium-6 columns display-container">
+  <div class="small-8 small-centered text-center medium-6 columns display-container">
 
     <h1>Add a New Meeting</h1>
 
     <%= form_for @meeting do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      <%= f.label :address %>
-      <%= f.text_field :address %>
-      <%= f.label :phone %>
-      <%= f.text_field :phone %>
-      <%= f.label :website %>
-      <%= f.text_field :website %>
-      <%= f.label :affiliation %>
-      <%= f.text_field :affiliation %>
+      <%= f.text_field :name, placeholder: "Name" %>
+      <%= f.text_field :address, placeholder: "Address" %>
+      <%= f.text_field :phone, placeholder: "Phone" %>
+      <%= f.text_field :website, placeholder: "Website" %>
+      <%= f.text_field :affiliation, placeholder: "Affiliation" %>
       <%= f.submit "Submit", class: "button" %>
 
     <% end %>

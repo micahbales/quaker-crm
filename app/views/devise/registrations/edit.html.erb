@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="small-8 small-centered medium-6 columns display-container">
+  <div class="small-8 small-centered text-center medium-6 columns display-container">
 
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
@@ -7,8 +7,7 @@
       <%= devise_error_messages! %>
 
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, placeholder: "Email", autofocus: true %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -16,20 +15,17 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, placeholder: "Password (leave blank if you don't want to change it)", autocomplete: "off" %>
         <% if @minimum_password_length %>
         <% end %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, autocomplete: "off" %>
+        <%= f.password_field :current_password, placeholder: "Current password", autocomplete: "off" %>
       </div>
 
       <div class="actions">
@@ -45,7 +41,7 @@
 
     <h3>Permanently Delete Account</h3>
     <br />
-    <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button" %>
+    <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account? (Cannot be undone)" }, method: :delete, class: "alert button" %>
 
     <%= link_to "Back", :back %>
   </div>
