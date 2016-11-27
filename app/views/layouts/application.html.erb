@@ -18,7 +18,7 @@
       <div class="flash-alert callout alert">
         <%= flash[:error] %>
       </div>
-    <% elsif flash %>
+    <% elsif flash[:success] || flash[:notice] %>
       <div class="flash-alert callout success">
         <%= flash[:success] %> <%= flash[:notice] %>
       </div>
