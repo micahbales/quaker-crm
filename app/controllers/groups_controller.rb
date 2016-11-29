@@ -43,6 +43,19 @@ class GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    @meeting = Meeting.find(params[:meeting_id])
+    @group = Group.find(params[:id])
+
+    if @group.destroy
+      flash[:success] = "#{@group.name} successfully deleted!"
+      redirect_to meeting_path(@meeting)
+    else
+      flash[:error] = @group.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
   private
   def group_params
     params.require(:group).permit(:name, :description, :meeting_id)
