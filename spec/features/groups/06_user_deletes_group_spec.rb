@@ -21,7 +21,7 @@ RSpec.feature "user deletes group" , %Q(
   scenario "user successfully deletes group" do
     login_user(user)
     visit edit_meeting_group_path(meeting, group)
-    click("Delete Group")
+    click_button("Delete Group")
 
     expect(current_path).to eq(meetings_path(meeting))
     expect(page).to have_content("#{group.name} successfully deleted!")
