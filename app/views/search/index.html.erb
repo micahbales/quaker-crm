@@ -8,7 +8,7 @@
     <% else %>
       <ul class="no-bullet" id="search-results">
         <% @search_results.each do |result| %>
-          <li><%= multisearch_result_filter(result) %></li>
+          <li><%= multisearch_link_generator(result) %></li>
         <% end %>
       </ul>
     <% end %>

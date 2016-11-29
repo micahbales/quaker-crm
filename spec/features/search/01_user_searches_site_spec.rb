@@ -99,4 +99,16 @@ RSpec.feature "user searches site" , %Q(
     expect(page).to have_content("#{another_meeting.name}")
     expect(page).to have_content("No results found. Please try another search.")
   end
+
+  scenario "user searches for empty string" do
+
+    login_user(user)
+    visit root_path
+    fill_in("Search", with: "")
+    click_button("Search")
+
+    expect(current_path).to eq(search_path)
+    expect(page).to have_content("Results for")
+    expect(page).to have_content("No results found. Please try another search.")
+  end
 end

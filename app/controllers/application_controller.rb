@@ -35,4 +35,31 @@ class ApplicationController < ActionController::Base
     flash[:error] = "You are not authorized to view this resource"
     redirect_to dashboard_path
   end
+
+  def multisearch_results_filter(search_results)
+    @results = []
+
+    def verify_user(result)
+      if @meeting.user_id == current_user.id
+          @results << result
+      end
+    end
+
+    search_results.each do |result|
+      if result.searchable_type == "Meeting"
+        @meeting = Meeting.find(result.searchable_id)
+        verify_user(result)
+      elsif result.searchable_type == "Individual"
+        individual = Individual.find(result.searchable_id)
+        @meeting = Meeting.find(individual.meeting_id)
+        verify_user(result)
+      elsif result.searchable_type == "Group"
+        group = Group.find(result.searchable_id)
+        @meeting = Meeting.find(group.meeting_id)
+        verify_user(result)
+      end
+    end
+    @results
+  end
+
 end
