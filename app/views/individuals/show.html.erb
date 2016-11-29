@@ -1,14 +1,12 @@
-<div class="row">
-  <div class="small-12 text-center columns">
-    <h1><%= @individual.first_name %> <%= @individual.last_name %></h1>
-  </div>
-</div>
-<div class="row">
+<div class="row top-page-element">
   <div class="small-8 medium-4 small-centered text-center columns display-container">
+    <h1><%= @individual.first_name %> <%= @individual.last_name %></h1>
     <ul class="no-bullet">
-      <% @individual.attributes.each do |key, value| %>
-        <li><%= attribute_filter(key, value) %></li>
-      <% end %>
+      <li>Address: <%= @individual.address %></li>
+      <li>Email: <%= @individual.email %></li>
+      <li>Phone: <%= @individual.phone %></li>
+      <li>Birthday: <%= @individual.birthday %></li>
+      <li>Notes: <%= @individual.notes %></li>
       <li>Groups:
         <em><%= "none" unless @individual.groups.size > 0 %></em>
         <% @individual.groups.each_with_index do |group, index| %>
@@ -20,15 +18,27 @@
         <% end %>
       </li>
     </ul>
-    <%= form_for @group_assignment, url: { action: "add_or_remove", controller: "group_assignments" }, method: "post" do |f| %>
-      <%= f.collection_select :group, @meeting.groups, :id, :name, include_blank: "Add/Remove #{@individual.first_name} from Group" %>
-      <%= hidden_field_tag 'meeting_id', @meeting.id %>
-      <%= hidden_field_tag 'individual_id', @individual.id %>
-      <%= f.submit "+", class: "button" %>
-      <%= f.submit "-", class: "button" %>
-    <% end %>
+    <div class="row small">
+      <div class="input-group">
+         <%= form_for @group_assignment, url: { action: "add_or_remove", controller: "group_assignments" }, method: "post" do |f| %>
+
+         <div class="input-group-field">
+           <%= f.collection_select :group, @meeting.groups, :id, :name, {include_blank: "Add/Remove #{@individual.first_name} from:"}, {class: "select-bar-margins"} %>
+           <%= hidden_field_tag 'meeting_id', @meeting.id %>
+           <%= hidden_field_tag 'individual_id', @individual.id %>
+        </div>
+
+        <div class="input-group-button button-group">
+           <%= f.submit "+", class: "button", style: "margin-left: 1px;" %>
+           <%= f.submit "-", class: "button" %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+
     <%= link_to "Update #{@individual.first_name}'s information", edit_meeting_individual_path(@meeting, @individual), class: "button" %>
     <br />
-    <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting), class: "button" %>
+    <%= link_to "Back to #{@meeting.name}", meeting_path(@meeting) %>
   </div>
 </div>

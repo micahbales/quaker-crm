@@ -11,7 +11,7 @@
   <div class="top-bar-right">
     <%= form_tag(search_path, controller: "search_controller", method: "get", id: "search-form") do %>
       <ul class="menu">
-      <li><%= text_field_tag "Search", "", id: "search-field" %></li>
+      <li><%= text_field_tag "Search", "", id: "search-field", placeholder: "search site" %></li>
       <li><%= submit_tag "Search", class: "button" %></li>
       </ul>
     <% end %>

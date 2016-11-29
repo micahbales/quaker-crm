@@ -1,19 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cantata+One|Imprima');
 
-.columns {
-
-  h1 {
-    text-align: center;
-    margin: 15px 0px 10px;
-  }
-
-  h2, h3, h4, h5, h6 {
-    margin-top: 15px;
-  }
-
-  p {
-    padding: 0px 20px 0px;
-  }
+.top-page-element {
+  margin-top: 30px;
 }
 
 .meeting-column-img {
@@ -21,9 +9,70 @@
   margin: 0px 0px 15px;
 }
 
+i.home-icon {
+  font-size: 120px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.select-bar-margins {
+  margin-bottom: 0px;
+  margin-right: 1px;
+}
+
+.top-bar {
+  background-color: #2199e8;
+
+  .top-bar-left {
+
+    .menu {
+      background-color: #2199e8;
+
+      li {
+        background-color: #2199e8;
+
+        a {
+          color: #fefefe;
+        }
+      }
+    }
+  }
+
+  .top-bar-right {
+
+    .menu {
+      background-color: #2199e8;
+
+      li {
+        background-color: #2199e8;
+
+        a {
+          color: #fefefe;
+        }
+      }
+      li:nth-child(2) {
+
+        input {
+          background-color: #ec5840;
+          color: #fefefe;
+        }
+      }
+    }
+  }
+}
+
+.callout {
+  text-align: center;
+
+  .alert {
+    background-color: rgba(236,88,64,.7);
+  }
+}
+
 /* Small only */
 @media screen and (max-width: 39.9375em) {
   .display-container {
+    border: 1px solid rgba(10, 10, 10, 0.25);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -42,6 +91,7 @@
 /* Medium and up */
 @media screen and (min-width: 40em) {
   .display-container {
+    border: 1px solid rgba(10, 10, 10, 0.25);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;

@@ -13,13 +13,18 @@
 
   <body>
     <%= render "layouts/navigation" %>
-    </div>
+
+    <% if flash[:error] %>
+      <div class="flash-alert callout alert">
+        <%= flash[:error] %>
+      </div>
+    <% elsif flash[:success] || flash[:notice] %>
+      <div class="flash-alert callout success">
+        <%= flash[:success] %> <%= flash[:notice] %>
+      </div>
+    <% end %>
 
     <%= yield %>
 
-    <br />
-    <% flash.each do |key, value| %>
-      <%= value %>
-    <% end %>
   </body>
 </html>

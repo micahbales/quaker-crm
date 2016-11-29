@@ -13,10 +13,10 @@ class IndividualsController < ApplicationController
     @individual.meeting = @meeting
 
     if @individual.save
-      flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been added to #{@meeting.name}!"
+      flash[:success] = "#{@individual.first_name} #{@individual.last_name} has been added to #{@meeting.name}!"
       redirect_to meeting_path(@meeting)
     else
-      flash[:errors] = @individual.errors.full_messages.to_sentence
+      flash[:error] = @individual.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -38,10 +38,10 @@ class IndividualsController < ApplicationController
     @individual.birthday = DateTime.new(params[:birthday]["year"].to_i, params[:birthday]["month"].to_i, params[:birthday]["day"].to_i)
 
     if @individual.update(individual_params)
-      flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been updated!"
+      flash[:success] = "#{@individual.first_name} #{@individual.last_name} has been updated!"
       redirect_to [@meeting, @individual]
     else
-      flash[:errors] = @individual.errors.full_messages.to_sentence
+      flash[:error] = @individual.errors.full_messages.to_sentence
       @individual = Individual.find(@individual.id)
       render :edit
     end
@@ -52,7 +52,7 @@ class IndividualsController < ApplicationController
     @individual = Individual.find(params[:id])
 
     if @individual.delete
-      flash[:alert] = "#{@individual.first_name} #{@individual.last_name} has been deleted from #{@meeting.name}"
+      flash[:success] = "#{@individual.first_name} #{@individual.last_name} has been deleted from #{@meeting.name}"
       redirect_to @meeting
     else
       flash[:error] = @individual.errors.full_messages.to_sentence

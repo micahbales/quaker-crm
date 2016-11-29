@@ -23,7 +23,7 @@ RSpec.feature "user creates account" , %Q(
     click_link("Sign Up")
     fill_in("Email", with: user.email)
     fill_in("Password", with: "password")
-    fill_in("Confirm Password", with: "password")
+    fill_in("Confirm password", with: "password")
     click_button("Submit")
 
     expect(current_path).to eq(dashboard_path)
@@ -35,7 +35,7 @@ RSpec.feature "user creates account" , %Q(
     visit root_path
     click_link("Sign Up")
     fill_in("Password", with: "password")
-    fill_in("Confirm Password", with: "password")
+    fill_in("Confirm password", with: "password")
     click_button("Submit")
 
     expect(page).to have_content("Email can't be blank")
@@ -47,7 +47,7 @@ RSpec.feature "user creates account" , %Q(
     click_link("Sign Up")
     fill_in("Email", with: user.email)
     fill_in("Password", with: "password")
-    fill_in("Confirm Password", with: "passwordz")
+    fill_in("Confirm password", with: "passwordz")
     click_button("Submit")
 
     expect(page).to have_content("Password confirmation doesn't match")
@@ -70,7 +70,7 @@ RSpec.feature "user creates account" , %Q(
     click_link("Sign Up")
     fill_in("Email", with: user1.email)
     fill_in("Password", with: "password")
-    fill_in("Confirm Password", with: "password")
+    fill_in("Confirm password", with: "password")
     click_button("Submit")
 
     expect(page).to have_content("Email has already been taken")

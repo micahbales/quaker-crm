@@ -12,7 +12,7 @@ class MeetingsController < ApplicationController
     @meeting.user = current_user
 
     if @meeting.save
-      flash[:alert] = "Meeting Created!"
+      flash[:success] = "Meeting Created!"
       redirect_to :dashboard
     else
       flash[:error] = @meeting.errors.full_messages.to_sentence
@@ -32,7 +32,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
 
     if @meeting.update(meeting_params)
-      flash[:alert] = "#{@meeting.name} successfully updated!"
+      flash[:success] = "#{@meeting.name} successfully updated!"
       redirect_to :dashboard
     else
       flash[:error] = @meeting.errors.full_messages.to_sentence
@@ -45,7 +45,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
 
     if @meeting.delete
-      flash[:alert] = "#{@meeting.name} successfully deleted!"
+      flash[:success] = "#{@meeting.name} successfully deleted!"
       redirect_to dashboard_path
     else
       flash[:error] = @meeting.errors.full_messages.to_sentence

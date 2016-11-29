@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @group.meeting_id = params[:meeting_id]
 
     if @group.save
-      flash[:alert] = "Group successfully created!"
+      flash[:success] = "Group successfully created!"
       redirect_to @meeting
     else
       flash[:error] = @group.errors.full_messages.to_sentence
@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     if @group.update(group_params)
-      flash[:alert] = "#{@group.name} successfully updated!"
+      flash[:success] = "#{@group.name} successfully updated!"
       redirect_to meeting_group_path(@meeting, @group)
     else
       flash[:error] = @group.errors.full_messages.to_sentence
