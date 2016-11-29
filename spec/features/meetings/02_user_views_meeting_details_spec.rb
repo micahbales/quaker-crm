@@ -21,7 +21,7 @@ RSpec.feature "user views meeting details" , %Q(
     login_user(user)
     visit meeting_path(meeting)
 
-    expect(page).to have_content("New City Friends Meeting")
+    expect(page).to have_content(meeting.name)
     expect(page).to have_content("101 Quaker Lane")
     expect(page).to have_content("1234567890")
     expect(page).to have_content("www.newcityfriends.org")
