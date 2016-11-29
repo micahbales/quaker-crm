@@ -2,9 +2,11 @@
   <div class="small-8 medium-4 small-centered text-center columns display-container">
     <h1><%= @individual.first_name %> <%= @individual.last_name %></h1>
     <ul class="no-bullet">
-      <% @individual.attributes.each do |key, value| %>
-        <li><%= attribute_filter(key, value) %></li>
-      <% end %>
+      <li>Address: <%= @individual.address %></li>
+      <li>Email: <%= @individual.email %></li>
+      <li>Phone: <%= @individual.phone %></li>
+      <li>Birthday: <%= @individual.birthday %></li>
+      <li>Notes: <%= @individual.notes %></li>
       <li>Groups:
         <em><%= "none" unless @individual.groups.size > 0 %></em>
         <% @individual.groups.each_with_index do |group, index| %>
