@@ -51,7 +51,7 @@ class IndividualsController < ApplicationController
     @meeting = Meeting.find(params[:meeting_id])
     @individual = Individual.find(params[:id])
 
-    if @individual.delete
+    if @individual.destroy
       flash[:success] = "#{@individual.first_name} #{@individual.last_name} has been deleted from #{@meeting.name}"
       redirect_to @meeting
     else
