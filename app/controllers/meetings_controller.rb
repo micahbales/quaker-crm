@@ -44,7 +44,7 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting = Meeting.find(params[:id])
 
-    if @meeting.delete
+    if @meeting.destroy
       flash[:success] = "#{@meeting.name} successfully deleted!"
       redirect_to dashboard_path
     else

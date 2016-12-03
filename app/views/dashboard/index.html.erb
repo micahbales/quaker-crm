@@ -12,7 +12,7 @@
         <h2>My Meetings</h2>
         <ul class="no-bullet">
           <% if current_user && current_user.meetings %>
-            <% current_user.meetings.each do |meeting| %>
+            <% current_user.meetings.order(name: :asc).each do |meeting| %>
               <li><%= link_to meeting.name, meeting_path(meeting) %></li>
             <% end %>
           <% else %>
@@ -30,7 +30,7 @@
         <ul class="no-bullet">
           <% if current_user && current_user.meetings %>
             <% current_user.meetings.each do |meeting| %>
-              <% meeting.individuals.each do |individual| %>
+              <% meeting.individuals.order(last_name: :asc).each do |individual| %>
                 <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(meeting, individual) %></li>
               <% end %>
             <% end %>
@@ -47,7 +47,7 @@
         <ul class="no-bullet">
           <% if current_user && current_user.meetings %>
             <% current_user.meetings.each do |meeting| %>
-              <% meeting.groups.each do |group| %>
+              <% meeting.groups.order(name: :asc).each do |group| %>
                 <li><%= link_to group.name, meeting_group_path(meeting, group) %></li>
               <% end %>
             <% end %>

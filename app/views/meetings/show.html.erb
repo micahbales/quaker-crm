@@ -8,9 +8,10 @@
   <div class="small-12 medium-6 medium-centered text-center columns display-container">
     <h1><%= @meeting.name %></h1>
     <ul class="no-bullet">
-      <% @meeting.attributes.each do |key, value| %>
-        <li><%= attribute_filter(key, value) %></li>
-      <% end %>
+      <li>Address: <%= @meeting.address %></li>
+      <li>Phone: <%= @meeting.phone %></li>
+      <li>Website: <%= @meeting.website %></li>
+      <li>Affiliation: <%= @meeting.affiliation %></li>
     </ul>
     <%= link_to "Edit Meeting", edit_meeting_path(@meeting), class: "button" %>
     <br />
@@ -25,7 +26,7 @@
       <h2>People</h2>
       <% if @meeting.individuals %>
         <ul class="no-bullet">
-          <% @meeting.individuals.each do |individual| %>
+          <% @meeting.individuals.order(last_name: :asc).each do |individual| %>
             <li><%= link_to "#{individual.first_name} #{individual.last_name}", meeting_individual_path(@meeting, individual) %></li>
           <% end %>
         </ul>
@@ -41,7 +42,7 @@
       <h2>Groups</h2>
       <% if @meeting.groups %>
         <ul class="no-bullet">
-          <% @meeting.groups.each do |group| %>
+          <% @meeting.groups.order(name: :asc).each do |group| %>
             <li><%= link_to "#{group.name}", meeting_group_path(@meeting, group) %></li>
           <% end %>
         </ul>

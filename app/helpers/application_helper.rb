@@ -1,11 +1,5 @@
 module ApplicationHelper
 
-  def attribute_filter(key, value)
-    unless key == "id" || key == "created_at" || key == "updated_at" || key == "meeting_id" || key == "user_id" || key == "name" || value == "" || key == "first_name" || key == "last_name"
-      "#{key.gsub(/_/, " ").capitalize}: #{value}"
-    end
-  end
-
   def multisearch_link_generator(result)
 
     if result.searchable_type == "Meeting"

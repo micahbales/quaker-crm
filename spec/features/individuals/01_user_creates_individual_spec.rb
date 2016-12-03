@@ -21,7 +21,7 @@ RSpec.feature "user creates individual" , %Q(
 
     login_user(user)
     visit dashboard_path
-    click_link("New City Friends Meeting")
+    click_link(meeting.name)
     click_link("Add Individual")
     fill_in("First Name", with: "Jim")
     fill_in("Last Name", with: "Bo")
@@ -42,7 +42,7 @@ RSpec.feature "user creates individual" , %Q(
 
     login_user(user)
     visit dashboard_path
-    click_link("New City Friends Meeting")
+    click_link(meeting.name)
     click_link("Add Individual")
     fill_in("First Name", with: "Jim")
     fill_in("Last Name", with: "Bo")
@@ -56,7 +56,7 @@ RSpec.feature "user creates individual" , %Q(
 
     login_user(user)
     visit dashboard_path
-    click_link("New City Friends Meeting")
+    click_link(meeting.name)
     click_link("Add Individual")
     fill_in("Address", with: "101 Jimmy's Place")
     fill_in("Email", with: "jimmy@jimbo.com")

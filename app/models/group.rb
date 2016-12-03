@@ -6,6 +6,6 @@ class Group < ApplicationRecord
   validates :meeting_id, presence: true
 
   belongs_to :meeting
-  has_many :group_assignments
+  has_many :group_assignments, dependent: :destroy
   has_many :individuals, through: :group_assignments
 end
