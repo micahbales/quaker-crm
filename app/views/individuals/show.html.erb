@@ -23,7 +23,7 @@
          <%= form_for @group_assignment, url: { action: "add_or_remove", controller: "group_assignments" }, method: "post" do |f| %>
 
          <div class="input-group-field">
-           <%= f.collection_select :group, @meeting.groups, :id, :name, {include_blank: "Add/Remove #{@individual.first_name} from:"}, {class: "select-bar-margins"} %>
+           <%= f.collection_select :group, @meeting.groups.order(name: :asc), :id, :name, {include_blank: "Add/Remove #{@individual.first_name} from:"}, {class: "select-bar-margins"} %>
            <%= hidden_field_tag 'meeting_id', @meeting.id %>
            <%= hidden_field_tag 'individual_id', @individual.id %>
         </div>
