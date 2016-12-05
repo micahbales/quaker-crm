@@ -4,6 +4,13 @@ A simple CRM that allows Quaker meetings/churches to keep track of the people an
 
 [Visit the live site here!](https://quaker-crm.herokuapp.com/)
 
+## How to Use the Site
+
+To test out the web application before creating your own account, feel free to use the following demo account, which has already been set up:
+
+1. Username: `test@email.com`
+2. Password: `password`
+
 ## ER Diagram
 
 ![ER-Diagram](http://i.imgur.com/cK0hTWC.png =250x)
