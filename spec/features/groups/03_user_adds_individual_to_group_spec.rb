@@ -28,10 +28,10 @@ RSpec.feature "user adds individual to group" , %Q(
   let!(:group2) { FactoryGirl.create(:group, meeting: meeting) }
   let!(:group3) { FactoryGirl.create(:group, meeting: meeting) }
   let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
+  before { login_user(user) }
 
   scenario "user successfully adds an individual to a group" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     select(group.name)
@@ -49,7 +49,6 @@ RSpec.feature "user adds individual to group" , %Q(
 
   scenario "user adds individual to 3 groups" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     select(group.name)
@@ -66,7 +65,6 @@ RSpec.feature "user adds individual to group" , %Q(
 
   scenario "user fails to select a valid group" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     click_button("+")
@@ -82,7 +80,6 @@ RSpec.feature "user adds individual to group" , %Q(
 
   scenario "user selects group where individual is already member" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     select(group.name)

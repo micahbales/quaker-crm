@@ -16,11 +16,10 @@ RSpec.feature "user deletes meeting" , %Q(
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  before { login_user(user) }
 
   scenario "user successfully deletes meeting" do
 
-    login_user(user)
-    visit dashboard_path
     click_link(meeting.name)
     click_link("Edit Meeting")
     click_button("Delete Meeting")

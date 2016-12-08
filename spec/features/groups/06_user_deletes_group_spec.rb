@@ -17,9 +17,10 @@ RSpec.feature "user deletes group" , %Q(
   let(:user) { FactoryGirl.create(:user) }
   let(:meeting) { FactoryGirl.create(:meeting, user: user) }
   let!(:group) { FactoryGirl.create(:group, meeting: meeting) }
+  before { login_user(user) }
 
   scenario "user successfully deletes group" do
-    login_user(user)
+
     visit edit_meeting_group_path(meeting, group)
     click_button("Delete Group")
 

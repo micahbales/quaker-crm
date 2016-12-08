@@ -18,10 +18,10 @@ RSpec.feature "user creates group" , %Q(
 
   let(:user) { FactoryGirl.create(:user) }
   let(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  before { login_user(user) }
 
   scenario "user successfully creates group (with description)" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("Add Group")
     fill_in("Group Name", with: "Ministry & Oversight")
@@ -35,7 +35,6 @@ RSpec.feature "user creates group" , %Q(
 
   scenario "user successfully creates group (without description)" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("Add Group")
     fill_in("Group Name", with: "Ministry & Oversight")
@@ -48,7 +47,6 @@ RSpec.feature "user creates group" , %Q(
 
   scenario "user fails to provide group name" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("Add Group")
 

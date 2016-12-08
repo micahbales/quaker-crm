@@ -16,10 +16,10 @@ RSpec.feature "user creates individual" , %Q(
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  before { login_user(user) }
 
   scenario "user successfully adds individual to congregation" do
 
-    login_user(user)
     visit dashboard_path
     click_link(meeting.name)
     click_link("Add Individual")
@@ -40,7 +40,6 @@ RSpec.feature "user creates individual" , %Q(
 
   scenario "individual is created as long as there is a name" do
 
-    login_user(user)
     visit dashboard_path
     click_link(meeting.name)
     click_link("Add Individual")
@@ -54,7 +53,6 @@ RSpec.feature "user creates individual" , %Q(
 
   scenario "individual is not created when no name is provided" do
 
-    login_user(user)
     visit dashboard_path
     click_link(meeting.name)
     click_link("Add Individual")

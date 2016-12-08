@@ -31,10 +31,10 @@ RSpec.feature "user removes individual from group" , %Q(
   let!(:group_assignment) { FactoryGirl.create(:group_assignment, individual: individual, group: group) }
   let!(:group_assignment2) { FactoryGirl.create(:group_assignment, individual: individual, group: group2) }
   let!(:group_assignment3) { FactoryGirl.create(:group_assignment, individual: individual, group: group3) }
+  before { login_user(user) }
 
   scenario "user successfully removes an individual from a group" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
 
@@ -54,7 +54,6 @@ RSpec.feature "user removes individual from group" , %Q(
 
   scenario "user removes individual from 3 groups" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
 
@@ -74,7 +73,6 @@ RSpec.feature "user removes individual from group" , %Q(
 
   scenario "user selects group where individual is not a member" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     select(group4.name)
