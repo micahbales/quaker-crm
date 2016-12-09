@@ -6,4 +6,17 @@ RSpec.describe Group do
   it { should belong_to(:meeting) }
   it { should have_many(:group_assignments) }
   it { should have_many(:individuals) }
+
+  describe "dependent destroy" do
+    it "destroys associated group_assignments" do
+      group = FactoryGirl.create(:group)
+      group_assignment = FactoryGirl.create(:group_assignment)
+
+      group.group_assignments << group_assignment
+      group_assignment_id = group_assignment.id
+      group.destroy
+
+      expect{ GroupAssignment.find(group_assignment_id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
 end

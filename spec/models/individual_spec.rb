@@ -17,6 +17,7 @@ RSpec.describe Individual do
       individual.group_assignments << group_assignment
       group_assignment_id = group_assignment.id
       individual.destroy
+
       expect{ GroupAssignment.find(group_assignment_id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
