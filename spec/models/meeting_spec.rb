@@ -4,6 +4,8 @@ RSpec.describe Meeting do
   it { should have_valid(:name).when("Bob's House", "The Library") }
   it { should_not have_valid(:name).when(nil, "") }
   it { should belong_to(:user)}
+  it { should have_many(:groups) }
+  it { should have_many(:individuals) }
 
   describe "dependent destroy" do
     it "destroys associated individuals" do
@@ -25,7 +27,7 @@ RSpec.describe Meeting do
       group_id = group.id
       meeting.destroy
 
-      expect{ Group.find(group_id )}.to raise_error(ActiveRecord::RecordNotFound)
+      expect{ Group.find(group_id)}.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end
