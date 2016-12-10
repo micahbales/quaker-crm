@@ -4,6 +4,7 @@ class Individual < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :meeting, presence: true
 
   belongs_to :meeting
   has_many :group_assignments, dependent: :destroy

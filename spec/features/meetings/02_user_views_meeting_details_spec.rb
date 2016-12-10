@@ -15,10 +15,10 @@ RSpec.feature "user views meeting details" , %Q(
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  before { login_user(user) }
 
   scenario "authenticated user successfuly views meeting information" do
 
-    login_user(user)
     visit meeting_path(meeting)
 
     expect(page).to have_content(meeting.name)

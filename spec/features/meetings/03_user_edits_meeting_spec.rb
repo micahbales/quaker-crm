@@ -17,11 +17,10 @@ RSpec.feature "user edits meeting" , %Q(
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
+  before { login_user(user) }
 
   scenario "user successfully edits meeting" do
 
-    login_user(user)
-    visit dashboard_path
     click_link(meeting.name)
     click_link("Edit Meeting")
     fill_in("Name", with: "New City Friends Meeting")
@@ -37,8 +36,6 @@ RSpec.feature "user edits meeting" , %Q(
 
   scenario "meeting update successful with only one attribute updated" do
 
-    login_user(user)
-    visit dashboard_path
     click_link(meeting.name)
     click_link("Edit Meeting")
     fill_in("Phone", with: "0987654321")
@@ -50,8 +47,6 @@ RSpec.feature "user edits meeting" , %Q(
 
   scenario "meeting update fails: name submitted as blank" do
 
-    login_user(user)
-    visit dashboard_path
     click_link(meeting.name)
     click_link("Edit Meeting")
     fill_in("Name", with: "")

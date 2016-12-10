@@ -24,11 +24,10 @@ RSpec.feature "user searches site" , %Q(
   let!(:another_group) { FactoryGirl.create(:group, meeting: another_meeting) }
   let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
   let!(:another_individual) { FactoryGirl.create(:individual, meeting: another_meeting) }
+  before { login_user(user) }
 
   scenario "user searches for individual" do
 
-    login_user(user)
-    visit root_path
     fill_in("Search", id: "search-field", with: "#{individual.first_name}")
     click_button("Search")
 
@@ -39,8 +38,6 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for individual created by another account" do
 
-    login_user(user)
-    visit root_path
     fill_in("Search", with: "#{another_individual.first_name}")
     click_button("Search")
 
@@ -52,8 +49,6 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for group" do
 
-    login_user(user)
-    visit root_path
     fill_in("Search", with: "#{group.name}")
     click_button("Search")
 
@@ -64,8 +59,6 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for group created by another account" do
 
-    login_user(user)
-    visit root_path
     fill_in("Search", with: "#{another_group.name}")
     click_button("Search")
 
@@ -77,8 +70,6 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for meeting" do
 
-    login_user(user)
-    visit root_path
     fill_in("Search", with: "#{meeting.name}")
     click_button("Search")
 
@@ -89,8 +80,6 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for meeting created by another account" do
 
-    login_user(user)
-    visit root_path
     fill_in("Search", with: "#{another_meeting.name}")
     click_button("Search")
 
@@ -102,8 +91,6 @@ RSpec.feature "user searches site" , %Q(
 
   scenario "user searches for empty string" do
 
-    login_user(user)
-    visit root_path
     fill_in("Search", with: "")
     click_button("Search")
 

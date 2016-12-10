@@ -20,10 +20,10 @@ RSpec.feature "user updates group" , %Q(
   let(:user) { FactoryGirl.create(:user) }
   let(:meeting) { FactoryGirl.create(:meeting, user: user) }
   let!(:group) { FactoryGirl.create(:group, meeting: meeting) }
+  before { login_user(user) }
 
   scenario "user successfully updates group name and description" do
 
-    login_user(user)
     visit meeting_group_path(meeting, group)
     click_link("Edit Group")
     fill_in("Group Name", with: group.name)
@@ -37,7 +37,6 @@ RSpec.feature "user updates group" , %Q(
 
   scenario "user successfully updates group name, leaves description blank" do
 
-    login_user(user)
     visit meeting_group_path(meeting, group)
     click_link("Edit Group")
     fill_in("Group Name", with: group.name)
@@ -50,7 +49,6 @@ RSpec.feature "user updates group" , %Q(
 
   scenario "user leaves group name blank" do
 
-    login_user(user)
     visit meeting_group_path(meeting, group)
     click_link("Edit Group")
     fill_in("Group Name", with: "")

@@ -16,10 +16,10 @@ RSpec.feature "user views group" , %Q(
   let(:user) { FactoryGirl.create(:user) }
   let(:meeting) { FactoryGirl.create(:meeting, user: user) }
   let!(:group) { FactoryGirl.create(:group, meeting: meeting) }
+  before { login_user(user) }
 
   scenario "user views group" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link(group.name)
 

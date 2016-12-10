@@ -19,10 +19,10 @@ RSpec.feature "user updates individual" , %Q(
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
   let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
+  before { login_user(user) }
 
   scenario "user updates individual's first and last names" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     click_link("Update #{individual.first_name}'s information")
@@ -36,7 +36,6 @@ RSpec.feature "user updates individual" , %Q(
 
   scenario "user updates individual's email" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     click_link("Update #{individual.first_name}'s information")
@@ -49,7 +48,6 @@ RSpec.feature "user updates individual" , %Q(
 
   scenario "user updates individual's birthday" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     click_link("Update #{individual.first_name}'s information")
@@ -64,7 +62,6 @@ RSpec.feature "user updates individual" , %Q(
 
   scenario "user gets error for leaving a required field blank" do
 
-    login_user(user)
     visit meeting_path(meeting)
     click_link("#{individual.first_name} #{individual.last_name}")
     click_link("Update #{individual.first_name}'s information")

@@ -20,9 +20,10 @@ RSpec.feature "user deletes individual" , %Q(
   let!(:user) { FactoryGirl.create(:user) }
   let!(:meeting) { FactoryGirl.create(:meeting, user: user) }
   let!(:individual) { FactoryGirl.create(:individual, meeting: meeting) }
+  before { login_user(user) }
 
   scenario "user clicks to delete individual" do
-    login_user(user)
+
     visit edit_meeting_individual_path(meeting, individual)
     click_button("Delete Profile")
 
